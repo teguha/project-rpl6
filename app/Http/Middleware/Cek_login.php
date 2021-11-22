@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class Cek_login
 {
     /**
@@ -18,16 +18,13 @@ class Cek_login
     public function handle(Request $request, Closure $next,$role)
     {
         if(!Auth::check()){
-            return redirect('/banjar');
+            return redirect('/banjar')->with('loginError','Login Gagal!, username dan password False');
         }
-         $user=Auth::user();
-       
-
+        $user=Auth::user();
         if($user->level == $role){
                 return $next($request);            
         }
-
-      
-        return redirect('/login')->with('error','Login Gagal!, username dan password False');
+        Alert::error('Login Failed', 'Password atau Email tidak valid!');
+        return redirect('/login')->with('loginError','Login Gagal!, username dan password False');
     }
 }

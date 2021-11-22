@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
     public function index(){
-        return view('login');
+        return view('loginOuth');
     }
 
     public function register(){
-        return view('registrasi');
+        return view('RegisterOuth');
     }
 
     public function user_registerr(Request $request){
@@ -35,16 +36,14 @@ class AuthController extends Controller
     }
     public function proses_login(Request $request){
         $request->validate([
-            'name'=>'required',
+            'email'=>'required',
             'username'=>'required',
             'password'=>'required'
         ]);
-        $kredensil= $request->only('name','username','password',);
-      
-
+        $kredensil= $request->only('email','username','password');
         if(Auth::attempt($kredensil)){
             $user= Auth::user();
-           
+        
                 if($user->username =='admin_kr_slumbung'){
                         return redirect()->intended('admin');  
                 }else if($user->username =='user_kr_slumbung'){
@@ -54,16 +53,28 @@ class AuthController extends Controller
                 }else if($user->username =='user_kr_swela'){
                         return redirect()->intended('user1');        
                 }else{
-                    return redirect('/login')->with('error','banjar anda tidak terdafar');
+                    Alert::error('Login Failed', 'Banjar Tidak Terdaftar');
+                    return redirect('/login');
                 }
-            return view('login')->with('error','failed');
+            Alert::error('Login Failed', 'Password dan Email tidak valid!');
+            return view('loginOuth');
         }
-        dd('gagal');
-        return view('login')->with('error','login gagal!  banjar tidak tersedia');
+        Alert::error('Login Failed','Password dan Email tidak valid!');
+        return view('loginOuth')->with('error','Login Failed');
+        
     }
-
-    public function logout(){
+    public function logout(Request $request){
         Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
         return redirect('/banjar');
     }
+
+    // public function logout(){
+    //     Auth::logout();
+    //     return redirect('/banjar');
+    // }
 }

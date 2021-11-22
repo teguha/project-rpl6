@@ -23,24 +23,18 @@ Route::get('/coba',function(){
     return view('coba');
 });
 
-Route::get('/banjar',function(){
-    return view('banjar');
-});
-
-
-
 Route::get('/login',[AuthController::class,'index'])->name('login-view');
 
 Route::get('/register',[AuthController::class,'register'])->name('register-view');
 
-Route::post('/proses_login',[AuthController::class,'proses_login'])->name('proses-view');
+Route::post('/proses_login',[AuthController::class,'proses_login'])->name('proses_login');
 
 Route::post('/user_register',[AuthController::class,'user_registerr'])->name('user-register');
 
 
 Route::group(['midlleware'=>['auth']],function(){
     Route::group(['middleware'=>['cek_login:admin']],function(){
-            Route::get('admin',[AdminController::class,'index'])->name('admin-dasboard');
+        Route::get('admin',[AdminController::class,'index'])->name('admin-dasboard');
     });
     Route::group(['middleware'=>['cek_login:anggota']],function(){
         Route::get('user',[UserController::class,'user'])->name('user-dasboard');
@@ -51,5 +45,24 @@ Route::group(['midlleware'=>['auth']],function(){
     Route::group(['middleware'=>['cek_login:anggota']],function(){
         Route::get('user1',[UserController::class,'user'])->name('user1-dasboard');
     });
-
+    Route::get('/logout',[AuthController::class,'logout'])->name('user-logout');
 });
+
+
+Route::get('/banjar',[HomeController::class,'banjar'])->name('banjar-view');
+
+Route::get('/posting',[HomeController::class,'posting'])->name('login-view');
+
+Route::post('/SimpanPosting',[HomeController::class,'Savedd'])->name('posting');
+
+Route::prefix('/dashboard-user')->group(function(){
+    Route::get('/',[UserController::class,'dashboard_list'])->name('dashboard-user');
+    
+    /*----------- profile user -----------*/
+    Route::get('/profile',[UserController::class,'profile_list'])->name('profile-user');
+    Route::get('/agenda',[UserController::class,'agenda_list'])->name('agenda-user');
+    Route::get('/upacara',[UserController::class,'upacara_list'])->name('upacara-user');
+});
+
+Route::get('/coba',[UserController::class,'coba_list']);
+

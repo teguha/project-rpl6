@@ -53,15 +53,15 @@
                                                     </div>
                                                     @enderror
                                                     <div class="form-group">
-                                            <label class="small mb-1" for="name">Name</label>
+                                            <label class="small mb-1" for="email">Name</label>
                                             <input
                                                 class="form-control py-4"
-                                                id="name"
-                                                type="text"
-                                                name="name"
-                                                placeholder="Masukkan Name"/>
+                                                id="email"
+                                                type="email"
+                                                name="email"
+                                                placeholder="name"/>
                                             @if($errors->has('password'))
-                                            <span class="error">{{$errors->first('username') }}</span>
+                                            <span class="error">{{$errors->first('email') }}</span>
                                             @endif
                                             </div>
                                                 <label class="small mb-1" for="inputEmailAddress">Username</label>
@@ -102,7 +102,7 @@
                                     </div>
                                     <div class="card-footer text-center">
                                         <div class="small">
-                                            {{-- <a href="{{url('register')}}">Belum Punya Akun? Daftar!</a> --}}
+                                            <a href="{{url('register')}}">Belum Punya Akun? Daftar!</a>
                                         </div>
                                     </div>
                                 </div>
