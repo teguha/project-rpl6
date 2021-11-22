@@ -13,6 +13,20 @@ body {
   color: #444444;
 }
 
+.logOut{
+  border:0;
+  font-weight: bold;
+  background-color: white;
+  color:rgb(35, 85, 167);
+}
+
+.buttonLogin{
+  border:0;
+  background-color: #E5F3F8;
+  color: rgb(5, 25, 139);
+  font-weight: bold;
+}
+
 a {
   color: #106eea;
 }
@@ -448,8 +462,8 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 90vh;
-  background-color: #cbe0fb;
-  /* background: url("../img/hero-bg.jpg") top left; */
+  background-color: #79808a71;
+  background: url("../img/banjar-bg.jpg") top left;
   background-size: cover;
   position: relative;
 }

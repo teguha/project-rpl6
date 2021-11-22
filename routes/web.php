@@ -23,9 +23,9 @@ Route::get('/coba',function(){
     return view('coba');
 });
 
-Route::get('/login',[AuthController::class,'index'])->name('login-view');
+Route::post('/login',[AuthController::class,'index'])->name('login-view');
 
-Route::get('/register',[AuthController::class,'register'])->name('register-view');
+Route::post('/register',[AuthController::class,'register'])->name('register-view');
 
 Route::post('/proses_login',[AuthController::class,'proses_login'])->name('proses_login');
 
@@ -33,19 +33,19 @@ Route::post('/user_register',[AuthController::class,'user_registerr'])->name('us
 
 
 Route::group(['midlleware'=>['auth']],function(){
-    Route::group(['middleware'=>['cek_login:admin']],function(){
-        Route::get('admin',[AdminController::class,'index'])->name('admin-dasboard');
+    Route::group(['middleware'=>['cek_login:kr_slumbung']],function(){
+        Route::get('kr_slumbung',[UserController::class,'logins'])->name('kr_slumbung-dasboard');
     });
-    Route::group(['middleware'=>['cek_login:anggota']],function(){
-        Route::get('user',[UserController::class,'user'])->name('user-dasboard');
+
+    Route::group(['middleware'=>['cek_login:Banjar_A']],function(){
+        Route::get('Banjar_A',[UserController::class,'logins'])->name('Banjar_A-dasboard');
     });
-    Route::group(['middleware'=>['cek_login:admin']],function(){
-        Route::get('admin1',[AdminController::class,'index'])->name('admin1-dasboard');
+
+    Route::group(['middleware'=>['cek_login:kr_swela']],function(){
+        Route::get('kr_swela',[UserController::class,'logins'])->name('kr_swela-dasboard');
     });
-    Route::group(['middleware'=>['cek_login:anggota']],function(){
-        Route::get('user1',[UserController::class,'user'])->name('user1-dasboard');
-    });
-    Route::get('/logout',[AuthController::class,'logout'])->name('user-logout');
+
+    Route::post('/logout',[AuthController::class,'logout'])->name('user-logout');
 });
 
 

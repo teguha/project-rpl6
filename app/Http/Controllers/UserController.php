@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function logins(){
+        return view('list.dashboard');
+    }
+
     public function coba_list(){
         return view('User.coba');
     }

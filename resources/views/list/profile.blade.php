@@ -1,3 +1,4 @@
+
 @extends('layouts/master')
 
 @section('title', 'Profile User')
@@ -22,8 +23,9 @@
                 <div class="card-body profile-card">
                     <center class="mt-4"> <img src="../assets2/images/users/5.jpg"
                             class="rounded-circle" width="150" />
-                        <h4 class="card-title mt-2">Hanna Gover</h4>
-                        <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
+                        <h4 class="card-title mt-2">{{ auth()->user()->name}}</h4>
+                        <h6 class="card-subtitle">{{ auth()->user()->level}}</h6>
+                        {{-- <h6 class="card-subtitle">Accoubts Manager Amix corp</h6> --}}
                     </center>
                 </div>
             </div>
@@ -37,14 +39,13 @@
                         <div class="form-group">
                             <label class="col-md-12 mb-0">Full Name</label>
                             <div class="col-md-12">
-                                <input type="text" placeholder="Johnathan Doe"
-                                    class="form-control ps-0 form-control-line">
+                            <input type="text"class="form-control ps-0 form-control-line" value="{{ auth()->user()->name}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="example-email" class="col-md-12">Email</label>
                             <div class="col-md-12">
-                                <input type="email" placeholder="johnathan@admin.com"
+                                <input type="email" value="{{ auth()->user()->email}}"
                                     class="form-control ps-0 form-control-line" name="example-email"
                                     id="example-email">
                             </div>
@@ -52,8 +53,8 @@
                         <div class="form-group">
                             <label class="col-md-12 mb-0">Password</label>
                             <div class="col-md-12">
-                                <input type="password" value="password"
-                                    class="form-control ps-0 form-control-line">
+                                <input type="password" value="{{ auth()->user()->password}} "
+                                    class="form-control ps-0 form-control-line" >
                             </div>
                         </div>
                         <div class="form-group">
