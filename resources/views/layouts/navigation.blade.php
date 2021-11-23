@@ -1,7 +1,9 @@
 <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
+       
         <aside class="left-sidebar" data-sidebarbg="skin6">
+         <link href="assets/css/style.css" rel="stylesheet">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
@@ -9,7 +11,7 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="index.php" aria-expanded="false"><i class="me-3 far fa-clock fa-fw"
+                                href="{{ route('dashboard-user') }}" aria-expanded="false"><i class="me-3 far fa-clock fa-fw"
                                     aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{ route('profile-user') }}" aria-expanded="false">
@@ -25,9 +27,18 @@
                                     aria-hidden="true"></i><span class="hide-menu">Upacara</span></a>
                                 </li>
                         <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link bg-info"
+                                aria-expanded="false"><i class="me-3 fas fa-sign-out-alt" style="color:cornsilk"
+                                    aria-hidden="true"></i><span class="hide-menu" style="color:cornsilk">
+                                    <form action="{{route('user-logout')}}" method="post">
+                                        @csrf
+                                        <button type="submit" class="buttonOut border-0 bg-info px-3 mt-2">Log Out</button>
+                                    </form>
+                                    </span></a>
+                                </li>
+                        {{-- <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link bg-info"
                                 href="{{ route('upacara-user') }}" aria-expanded="false"><i class="me-3 fas fa-sign-out-alt" style="color:cornsilk"
                                     aria-hidden="true"></i><span class="hide-menu" style="color:cornsilk">Log Out</span></a>
-                                </li>
+                                </li> --}}
                     </ul>
 
                 </nav>

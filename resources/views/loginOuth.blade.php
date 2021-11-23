@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/login.css">
+     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>login!</title>
   </head>
@@ -59,7 +60,11 @@
                                 <button type="submit" class="btn1 btn-primary">Login</button>
                             </div>
                         </div>
-                        <p>dont have an account ?<a href="{{url('register')}}"> register here </a>now<p>
+                        {{-- <p>dont have an account ?<a href="{{url('register')}}"> register here </a>now<p> --}}
+                    </form>
+                    <form action="/register" method="post">
+                        @csrf
+                        <p>dont have an account ?<button type="submit" class="logOut px-3 py-2">register</button>here </a>now<p>
                     </form>
                 </div>
             </div>

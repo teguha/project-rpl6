@@ -31,7 +31,9 @@ class AuthController extends Controller
             'password'=>bcrypt($request->password),
             'level'=>'anggota'
         ]);
-        return redirect('/login');
+        
+
+        return view('loginOuth');
 
     }
     public function proses_login(Request $request){
@@ -42,16 +44,14 @@ class AuthController extends Controller
         ]);
         $kredensil= $request->only('email','username','password');
         if(Auth::attempt($kredensil)){
-            $user= Auth::user();
+            $user = Auth::user();
         
-                if($user->username =='admin_kr_slumbung'){
-                        return redirect()->intended('admin');  
-                }else if($user->username =='user_kr_slumbung'){
-                        return redirect()->intended('user'); 
-                }else if($user->username =='admin_kr_swela'){
-                    return redirect()->intended('admin1');  
-                }else if($user->username =='user_kr_swela'){
-                        return redirect()->intended('user1');        
+                if($user->username =='kr_slumbung'){
+                        return redirect()->intended('kr_slumbung');  
+                }else if($user->username =='kr_swela'){
+                    return redirect()->intended('kr_swela');  
+                }else if($user->username =='Banjar_A'){
+                    return redirect()->intended('Banjar_A');        
                 }else{
                     Alert::error('Login Failed', 'Banjar Tidak Terdaftar');
                     return redirect('/login');

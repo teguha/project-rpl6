@@ -10,13 +10,14 @@
     </ol>
 @endsection
 
-@section('button')
-    <div class="text-end upgrade-bt mr-5">
-        <a href="https://www.wrappixel.com/templates/monsteradmin/"
-            class="btn btn-success d-none d-md-inline-block text-white" target="_blank">
-            Tambah Upacara</a>
-    </div>
-@endsection
+    @section('button')
+        <div class="text-end upgrade-bt mr-5">
+            <a href="https://www.wrappixel.com/templates/monsteradmin/"
+                class="btn btn-success d-none d-md-inline-block text-white" target="_blank">
+                Tambah Upacara</a>
+        </div>
+    @endsection
+
 
 @section('content')
         <h4 class="card-title">Upacara List</h4>

@@ -82,7 +82,11 @@
           <li><a href="#service">Service</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="{{url('/login')}}">Login</a></li>
+          <form action="/login" method="post">
+            @csrf
+            <button type="submit" class="buttonLogin px-3 py-2">Login</button>
+          </form>
+          {{-- <li><a href="{{url('/login')}}">Login</a></li> --}}
           {{-- <li>
             <form>
               <button type="submit" class="dropdown-item">Login</button>

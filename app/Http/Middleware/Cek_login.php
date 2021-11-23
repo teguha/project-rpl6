@@ -21,7 +21,7 @@ class Cek_login
             return redirect('/banjar')->with('loginError','Login Gagal!, username dan password False');
         }
         $user=Auth::user();
-        if($user->level == $role){
+        if($user->username == $role){
                 return $next($request);            
         }
         Alert::error('Login Failed', 'Password atau Email tidak valid!');

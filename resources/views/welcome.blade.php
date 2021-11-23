@@ -32,12 +32,14 @@
           <li><a href="#contact">Contact</a></li>
           <li><a href="{{url('/logout')}}">Logout</a></li>
           {{-- <li>
+        
             <form>
               <button type="submit" class="dropdown-item">Login</button>
             <form>
           </li> --}}
         </ul>
       </nav><!-- .nav-menu -->
+    
     </div>
     <h1 class=text-align-center> Banjar KR SLUMBUNG</h1>
     <body class="antialiased">
