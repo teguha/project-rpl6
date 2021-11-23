@@ -18,48 +18,32 @@
                 <div class="card-body">
                     <form class="form-horizontal form-material mx-2">
                         <div class="form-group">
-                            <label class="col-md-12 mb-0">Full Name</label>
+                            <label class="col-md-12 mb-0">Kegiatan</label>
                             <div class="col-md-12">
-                                <input type="text" placeholder="Johnathan Doe"
+                                <input type="text" placeholder="Rapat Teknis"
                                     class="form-control ps-0 form-control-line">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="example-email" class="col-md-12">Email</label>
+                            <label for="example-email" class="col-md-12">Tanggal</label>
                             <div class="col-md-12">
-                                <input type="email" placeholder="johnathan@admin.com"
+                                <input type="date" placeholder="2021-11-20"
                                     class="form-control ps-0 form-control-line" name="example-email"
                                     id="example-email">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 mb-0">Password</label>
+                            <label class="col-md-12 mb-0">Waktu</label>
                             <div class="col-md-12">
-                                <input type="password" value="password"
+                                <input type="time" value="09:00"
                                     class="form-control ps-0 form-control-line">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 mb-0">Phone No</label>
+                            <label class="col-md-12 mb-0">Tempat</label>
                             <div class="col-md-12">
-                                <input type="text" placeholder="123 456 7890"
+                                <input type="text" placeholder="Banjar Slumbung"
                                     class="form-control ps-0 form-control-line">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-12 mb-0">Country</label>
-                            <div class="col-md-12">
-                                <input type="text" placeholder="Indonesia"
-                                    class="form-control ps-0 form-control-line">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-12">Gender</label>
-                            <div class="col-sm-12 border-bottom">
-                                <select class="form-select shadow-none border-0 ps-0 form-control-line">
-                                    <option>Female</option>
-                                    <option>Male</option>
-                                </select>
                             </div>
                         </div>
                     </form>
@@ -67,8 +51,8 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-success">Save</button>
-        <a type="button" class="btn btn-info" href="">Back</a>
+        <button type="submit" class="btn btn-success">Simpan</button>
+        <a type="button" class="btn btn-info" href="">Kembali</a>
     </form>
 </div>
 @endsection

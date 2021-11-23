@@ -36,11 +36,12 @@ class AdminController extends Controller
         return view('tambah.agenda');
     }
 
+    public function new_upacara(){
+        return view('tambah.upacara');
+    }
+
     public function save_agenda(Request $request){
 
-        $request->validate([
-            agenda;
-        ])
 
         return redirect('list.agenda');
     }

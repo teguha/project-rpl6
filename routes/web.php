@@ -65,6 +65,7 @@ Route::prefix('/dashboard-user')->group(function(){
 
     /*----------- tambah -----------*/
     Route::get('/newagenda',[AdminController::class,'new_agenda'])->name('agenda-new');
+    Route::get('/newupacara',[AdminController::class,'new_upacara'])->name('upacara-new');
 
     /*----------- save -----------*/
     Route::get('/saveagenda',[AdminController::class,'save_agenda'])->name('agenda-save');

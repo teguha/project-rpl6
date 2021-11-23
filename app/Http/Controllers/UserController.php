@@ -6,9 +6,6 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-<<<<<<< HEAD
-    
-=======
     public function logins(){
         return view('list.dashboard');
     }
@@ -32,5 +29,4 @@ class UserController extends Controller
     public function upacara_list(){
         return view('list.upacara');
     }
->>>>>>> 7c1ee9231db00ec99f3564b1423ebbda4ec47408
 }
