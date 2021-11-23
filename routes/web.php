@@ -56,13 +56,19 @@ Route::get('/posting',[HomeController::class,'posting'])->name('login-view');
 Route::post('/SimpanPosting',[HomeController::class,'Savedd'])->name('posting');
 
 Route::prefix('/dashboard-user')->group(function(){
-    Route::get('/',[UserController::class,'dashboard_list'])->name('dashboard-user');
+    Route::get('/',[AdminController::class,'dashboard_list'])->name('dashboard-user');
     
     /*----------- profile user -----------*/
-    Route::get('/profile',[UserController::class,'profile_list'])->name('profile-user');
-    Route::get('/agenda',[UserController::class,'agenda_list'])->name('agenda-user');
-    Route::get('/upacara',[UserController::class,'upacara_list'])->name('upacara-user');
+    Route::get('/profile',[AdminController::class,'profile_list'])->name('profile-user');
+    Route::get('/agenda',[AdminController::class,'agenda_list'])->name('agenda-user');
+    Route::get('/upacara',[AdminController::class,'upacara_list'])->name('upacara-user');
+
+    /*----------- tambah -----------*/
+    Route::get('/newagenda',[AdminController::class,'new_agenda'])->name('agenda-new');
+
+    /*----------- save -----------*/
+    Route::get('/saveagenda',[AdminController::class,'save_agenda'])->name('agenda-save');
 });
 
-Route::get('/coba',[UserController::class,'coba_list']);
+Route::get('/coba',[AdminController::class,'coba_list']);
 
