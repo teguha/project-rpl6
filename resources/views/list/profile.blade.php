@@ -21,7 +21,7 @@
         <div class="col-lg-4 col-xlg-3 col-md-5">
             <div class="card">
                 <div class="card-body profile-card">
-                    <center class="mt-4"> <img src="../assets2/images/users/5.jpg"
+                    <center class="mt-4"> <img src="../assets2/images/users/2.jpg"
                             class="rounded-circle" width="150" />
                         <h4 class="card-title mt-2">{{ auth()->user()->name}}</h4>
                         <h6 class="card-subtitle">{{ auth()->user()->level}}</h6>
@@ -37,7 +37,7 @@
                 <div class="card-body">
                     <form class="form-horizontal form-material mx-2">
                         <div class="form-group">
-                            <label class="col-md-12 mb-0">Full Name</label>
+                            <label class="col-md-12 mb-0">Nama</label>
                             <div class="col-md-12">
                             <input type="text"class="form-control ps-0 form-control-line" value="{{ auth()->user()->name}}">
                             </div>
@@ -58,31 +58,31 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 mb-0">Phone No</label>
+                            <label class="col-md-12 mb-0">No. Telepon</label>
                             <div class="col-md-12">
                                 <input type="text" placeholder="123 456 7890"
                                     class="form-control ps-0 form-control-line">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12 mb-0">Country</label>
+                            <label class="col-md-12 mb-0">Negara</label>
                             <div class="col-md-12">
                                 <input type="text" placeholder="Indonesia"
                                     class="form-control ps-0 form-control-line">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-12">Gender</label>
+                            <label class="col-sm-12">Jenis Kelamin</label>
                             <div class="col-sm-12 border-bottom">
                                 <select class="form-select shadow-none border-0 ps-0 form-control-line">
-                                    <option>Female</option>
-                                    <option>Male</option>
+                                    <option>Wanita</option>
+                                    <option>Pria</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 d-flex">
-                                <button class="btn btn-success mx-auto mx-md-0 text-white">Update
+                                <button class="btn btn-success mx-auto mx-md-0 text-white">Perbaharui
                                     Profile</button>
                             </div>
                         </div>
