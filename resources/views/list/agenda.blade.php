@@ -2,7 +2,7 @@
 
 @section('title', 'Agenda User')
 
-@section('breadcrumb', 'Agenda')
+@section('breadcrumb', 'Agenda User')
 @section('content1')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
