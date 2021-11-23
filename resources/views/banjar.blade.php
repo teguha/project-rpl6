@@ -77,11 +77,11 @@
         <ul>
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#banjar">Banjar</a></li>
-           <li><a href="#about">About</a></li>
+           <li><a href="#service">Service</a></li>
            <li><a href="#history">History</a></li>
-          <li><a href="#service">Service</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#contact">Contact</a></li>
+           <li><a href="#about">About</a></li>
+           <li><a href="#team">Team</a></li>
+           <li><a href="#contact">Contact</a></li>
           <form action="/login" method="post">
             @csrf
             <button type="submit" class="buttonLogin px-3 py-2">Login</button>
@@ -143,7 +143,7 @@
     </section>
 <!-- End Featured Services Section -->
 <!-- ======= About Section ======= -->
-    <section id="about" class="about section-bg">
+    <section id="service" class="about section-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
           <h2>Service</h2>
@@ -254,7 +254,7 @@
       </div>
     </section>
 {{-- section service ------------------------------------------------------------------------------------ --}}
-    <section id="service" class="service section-bg">
+    <section id="about" class="service section-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
           <h2>About</h2>
