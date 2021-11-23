@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-    <h4 class="card-title">Agenda List</h4>
+    <h4 class="card-title">List Agenda</h4>
     <div class="table-responsive">
         <table class="table user-table no-wrap">
             <thead>
@@ -34,7 +34,20 @@
             </thead>
             <tbody>
                 <tr>
-                
+                    <td class="border-top-0">1</td>
+                    <td class="border-top-0">Rapat Teknis</td>
+                    <td class="border-top-0">2021-11-20</td>
+                    <td class="border-top-0">09:00</td>
+                    <td class="border-top-0">Banjar Slumbung</td>
+                    <td class="border-top-0"></td>
+                    <td><form action="" method="POST">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                @csrf
+                                <a type="button" class="btn btn-primary" href="">Edit</a>
+                                <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('apakah kamu yakin menghapus data ini ?')">Delete</button>
+                            </div>
+                    </form></td>
                 </tr>
             </tbody>
         </table>
