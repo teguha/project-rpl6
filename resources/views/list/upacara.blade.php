@@ -45,7 +45,7 @@
                     <td><form action="" method="POST">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 @csrf
-                                <a type="button" class="btn btn-primary" href="">Edit</a>
+                                <a type="button" class="btn btn-info" href="">Edit</a>
                                 <button type="submit" class="btn btn-danger"
                                     onclick="return confirm('apakah kamu yakin menghapus data ini ?')">Hapus</button>
                             </div>

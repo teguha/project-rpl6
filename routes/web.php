@@ -64,11 +64,23 @@ Route::prefix('/dashboard-user')->group(function(){
     Route::get('/upacara',[AdminController::class,'upacara_list'])->name('upacara-user');
 
     /*----------- tambah -----------*/
-    Route::get('/newagenda',[AdminController::class,'new_agenda'])->name('agenda-new');
-    Route::get('/newupacara',[AdminController::class,'new_upacara'])->name('upacara-new');
-
+    Route::get('/new-agenda',[AdminController::class,'new_agenda'])->name('agenda-new');
+    Route::get('/new-upacara',[AdminController::class,'new_upacara'])->name('upacara-new');
     /*----------- save -----------*/
-    Route::get('/saveagenda',[AdminController::class,'save_agenda'])->name('agenda-save');
+    Route::get('/savenew-agenda',[AdminController::class,'savenew_agenda'])->name('agenda-savenew');
+    Route::get('/savenew-upacara',[AdminController::class,'savenew_upacara'])->name('upacara-savenew');
+
+
+    /*----------- edit -----------*/
+    Route::get('/{id}/edit-agenda',[AdminController::class,'edit_agenda'])->name('agenda-edit');
+    Route::get('/{id}/edit-upacara',[AdminController::class,'edit_upacara'])->name('upacara-edit');
+    /*----------- save -----------*/
+    Route::get('/saveedit-agenda',[AdminController::class,'saveedit_agenda'])->name('agenda-saveedit');
+    Route::get('/saveedit-upacara',[AdminController::class,'saveedit_upacara'])->name('upacara-saveedit');
+
+
+    Route::get('/{id}/delete-agenda',[AdminController::class,'delete_agenda'])->name('agenda-delete');
+    Route::get('/{id}/delete-upacara',[AdminController::class,'delete_upacara'])->name('upacara-delete');
 });
 
 Route::get('/coba',[AdminController::class,'coba_list']);

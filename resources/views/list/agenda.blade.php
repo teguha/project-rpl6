@@ -39,11 +39,10 @@
                     <td class="border-top-0">2021-11-20</td>
                     <td class="border-top-0">09:00</td>
                     <td class="border-top-0">Banjar Slumbung</td>
-                    <td class="border-top-0"></td>
                     <td><form action="" method="POST">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 @csrf
-                                <a type="button" class="btn btn-primary" href="">Edit</a>
+                                <a type="button" class="btn btn-info" href="">Edit</a>
                                 <button type="submit" class="btn btn-danger"
                                     onclick="return confirm('apakah kamu yakin menghapus data ini ?')">Delete</button>
                             </div>
