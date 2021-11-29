@@ -6,7 +6,7 @@
 @section('breadcrumb', 'Profile')
 @section('content1')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="list.dashboard">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Profile</li>
     </ol>
 @endsection
@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <label class="col-md-12 mb-0">Password</label>
                             <div class="col-md-12">
-                                <input type="password" value="{{ auth()->user()->password}} "
+                                <input type="password" value="{{ auth()->user()->password }} "
                                     class="form-control ps-0 form-control-line" >
                             </div>
                         </div>

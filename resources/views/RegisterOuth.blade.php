@@ -46,6 +46,16 @@
                         </div>
                         <div class="form-row">
                             <div class="col-lg-7">
+                                <input type="text" placeholder="Banjar" class="form-control my-2 p-3 @error ('banjar_id') is-invalid @enderror" id="banjar_id" name="banjar_id" required>
+                                <div class="text-danger">
+                                @error('banjar_id')
+                                    {{ $message }}
+                                @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7">
                                 <input type="text" placeholder="User Name" class="form-control my-2 p-3 @error ('username') is-invalid @enderror" id="username" name="username">
                                 <div class="text-danger">
                                 @error('username')
@@ -72,7 +82,7 @@
                     </form>
                     <form action="/login" method="post">
                         @csrf
-                        <p>have an account ?<button type="submit" class="logOut px-3 py-2">Login</button>register here </a>now<p>
+                        <p>have an account ?<button type="submit" class="logOut py-2">Login</button>register here </a>now<p>
                     </form>
                 </div>
             </div>

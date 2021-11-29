@@ -13,11 +13,14 @@ body {
   color: #444444;
 }
 
+
+  
+
+
 .logOut{
-  border:0;
+  background-color: #fff;
   font-weight: bold;
-  background-color: white;
-  color:rgb(35, 85, 167);
+  border: 0;
 }
 
 .buttonLogin{
