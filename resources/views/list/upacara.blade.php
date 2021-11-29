@@ -2,6 +2,7 @@
 
 @section('title', 'Upacara User')
 
+
 @section('breadcrumb', 'Upacara')
 @section('content1')
     <ol class="breadcrumb">
@@ -9,6 +10,7 @@
         <li class="breadcrumb-item active" aria-current="page">Upacara</li>
     </ol>
 @endsection
+
 
     @section('button')
         <div class="text-end upgrade-bt mr-5">

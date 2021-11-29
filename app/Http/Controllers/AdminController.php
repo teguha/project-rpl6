@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Agenda;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
 class AdminController extends Controller
 
 {
@@ -24,8 +27,13 @@ class AdminController extends Controller
         return view('list.profile');
     }
 
-    public function agenda_list(){
-        return view('list.agenda');
+    public function agenda_list(Request $request){
+        // $datas= $request->session()->get('banjar_id');
+        // $hasil = Agenda::with('banjar')
+        // ->where([['banjar_id','=',$datas]])
+        // ->get();
+        // Paginator::useBootstrap();
+        // return redirect('list.agenda',compact('hasil'));
     }
 
     public function upacara_list(){
@@ -41,8 +49,6 @@ class AdminController extends Controller
     }
 
     public function save_agenda(Request $request){
-
-
-        return redirect('list.agenda');
+       
     }
 }

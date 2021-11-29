@@ -21,6 +21,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css2/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css2/style.min.css') }}">
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

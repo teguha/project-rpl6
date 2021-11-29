@@ -21,10 +21,16 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'username',
+        'banjar',
         'email',
         'password',
         'level'
     ];
+
+    public function banjars()
+    {
+        return $this->belongsTo(Posting::class, 'banjar_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

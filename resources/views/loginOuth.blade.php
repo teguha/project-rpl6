@@ -47,6 +47,16 @@
                         </div>
                         <div class="form-row">
                             <div class="col-lg-7">
+                                <input type="text" placeholder="Banjar" class="form-control my-2 p-3 @error ('banjar_id') is-invalid @enderror" id="banjar_id" name="banjar_id" required>
+                                <div class="text-danger">
+                                @error('banjar_id')
+                                    {{ $message }}
+                                @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7">
                                 <input type="password" placeholder="**********" class="form-control @error ('password') is-invalid @enderror my-2 p-3" id="password" name="password" required>
                                  <div class="text-danger">
                                 @error('password')

@@ -33,15 +33,15 @@ Route::post('/user_register',[AuthController::class,'user_registerr'])->name('us
 
 
 Route::group(['midlleware'=>['auth']],function(){
-    Route::group(['middleware'=>['cek_login:kr_slumbung']],function(){
+    Route::group(['middleware'=>['cek_login:3']],function(){
         Route::get('kr_slumbung',[UserController::class,'logins'])->name('kr_slumbung-dasboard');
     });
 
-    Route::group(['middleware'=>['cek_login:Banjar_A']],function(){
+    Route::group(['middleware'=>['cek_login:2']],function(){
         Route::get('Banjar_A',[UserController::class,'logins'])->name('Banjar_A-dasboard');
     });
 
-    Route::group(['middleware'=>['cek_login:kr_swela']],function(){
+    Route::group(['middleware'=>['cek_login:1']],function(){
         Route::get('kr_swela',[UserController::class,'logins'])->name('kr_swela-dasboard');
     });
 
@@ -56,31 +56,25 @@ Route::get('/posting',[HomeController::class,'posting'])->name('login-view');
 Route::post('/SimpanPosting',[HomeController::class,'Savedd'])->name('posting');
 
 Route::prefix('/dashboard-user')->group(function(){
-    Route::get('/',[AdminController::class,'dashboard_list'])->name('dashboard-user');
+    Route::get('/',[UserController::class,'logins'])->name('dashboard-user');
     
     /*----------- profile user -----------*/
-    Route::get('/profile',[AdminController::class,'profile_list'])->name('profile-user');
-    Route::get('/agenda',[AdminController::class,'agenda_list'])->name('agenda-user');
-    Route::get('/upacara',[AdminController::class,'upacara_list'])->name('upacara-user');
+    Route::get('/profile',[UserController::class,'profile_list'])->name('profile-user');
+    Route::get('/agenda',[UserController::class,'agenda_list'])->name('agenda-user');
+    Route::get('/upacara',[UserController::class,'upacara_list'])->name('upacara-user');
 
     /*----------- tambah -----------*/
-    Route::get('/new-agenda',[AdminController::class,'new_agenda'])->name('agenda-new');
-    Route::get('/new-upacara',[AdminController::class,'new_upacara'])->name('upacara-new');
-    /*----------- save -----------*/
-    Route::get('/savenew-agenda',[AdminController::class,'savenew_agenda'])->name('agenda-savenew');
-    Route::get('/savenew-upacara',[AdminController::class,'savenew_upacara'])->name('upacara-savenew');
-
+    Route::get('/newagenda',[UserController::class,'new_agenda'])->name('agenda-new');
+    Route::get('/newupacara',[UserController::class,'new_upacara'])->name('upacara-new');
 
     /*----------- edit -----------*/
     Route::get('/{id}/edit-agenda',[AdminController::class,'edit_agenda'])->name('agenda-edit');
     Route::get('/{id}/edit-upacara',[AdminController::class,'edit_upacara'])->name('upacara-edit');
     /*----------- save -----------*/
-    Route::get('/saveedit-agenda',[AdminController::class,'saveedit_agenda'])->name('agenda-saveedit');
-    Route::get('/saveedit-upacara',[AdminController::class,'saveedit_upacara'])->name('upacara-saveedit');
-
-
-    Route::get('/{id}/delete-agenda',[AdminController::class,'delete_agenda'])->name('agenda-delete');
-    Route::get('/{id}/delete-upacara',[AdminController::class,'delete_upacara'])->name('upacara-delete');
+    Route::post('/saveagenda',[UserController::class,'save_agenda'])->name('agenda-save');
+    Route::get('/{id}/editAgenda',[UserController::class,'edit_agenda'])->name('agenda-edit');
+    Route::get('/{id}/editsaveAgenda',[UserController::class,'AgendaEditSave'])->name('agenda-edits');
+    Route::post('/{id}/deleteagenda',[UserController::class,'delete_agenda'])->name('agenda-delete');
 });
 
 Route::get('/coba',[AdminController::class,'coba_list']);
