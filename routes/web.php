@@ -70,6 +70,9 @@ Route::prefix('/dashboard-user')->group(function(){
     Route::get('/newagenda',[UserController::class,'new_agenda'])->name('agenda-new');
     Route::get('/newupacara',[UserController::class,'new_upacara'])->name('upacara-new');
 
+    /*----------- edit -----------*/
+    Route::get('/{id}/edit-agenda',[AdminController::class,'edit_agenda'])->name('agenda-edit');
+    Route::get('/{id}/edit-upacara',[AdminController::class,'edit_upacara'])->name('upacara-edit');
     /*----------- save -----------*/
     Route::post('/saveagenda',[UserController::class,'save_agenda'])->name('agenda-save');
   

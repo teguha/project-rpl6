@@ -18,7 +18,6 @@
     <!-- Row -->
     <div class="row">
         <!-- Column -->
-        <div class="col-lg-4 col-xlg-3 col-md-5">
             <div class="card">
                 <div class="card-body profile-card">
                     <center class="mt-4"> <img src="../assets2/images/users/2.jpg"
@@ -29,7 +28,6 @@
                     </center>
                 </div>
             </div>
-        </div>
         <!-- Column -->
         <!-- Column -->
         <div class="col-lg-8 col-xlg-9 col-md-7">
