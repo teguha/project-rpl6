@@ -9,24 +9,25 @@
         <li class="breadcrumb-item active" aria-current="page">Agenda</li>
     </ol>
 @endsection
-
-{{-- @section('button')
-    <div class="text-end upgrade-bt mr-5">
-        <a href="{{ route('agenda-new') }}"
-            class="btn btn-success d-none d-md-inline-block text-white">
-            Tambah Agenda</a>
-    </div>
-@endsection --}}
-
-@section('content')
-<link rel="stylesheet" href="/css/script.css">
 @if($levels =='admin')
+@section('button')
     <div class="text-end upgrade-bt mr-5">
         <a href="{{ route('agenda-new') }}"
             class="btn btn-success d-none d-md-inline-block text-white">
             Tambah Agenda</a>
     </div>
+@endsection
 @endif
+@section('content')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/script.css">
+{{-- @if($levels =='admin')
+    <div class="text-end upgrade-bt mr-5">
+        <a href="{{ route('agenda-new') }}"
+            class="btn btn-success d-none d-md-inline-block text-white">
+            Tambah Agenda</a>
+    </div>
+@endif --}}
     <h1 class="card-title " ></h1>
     <div class="table-responsive">
         <table class="table user-table no-wrap">
@@ -55,28 +56,28 @@
                 <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                     @csrf
-                    <a type="button" class="btn btn-warning" href="{{route('agenda-edit',$agendas->id)}}">Edit</a>      
+                    <a type="button" class="btn btn-info" href="{{route('agenda-edit',$agendas->id)}}">Edit</a>      
                 </div>
                 <form action="{{route('agenda-delete',$agendas->id)}}" method='post' class='d-inline'onsubmit="return confirm('Apakah kamu yakin ingin menghapus agenda ini ?')">     
                     @csrf
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger">Hapus</button>
                  </form> 
                 </td>
                 @endif
                 <td>
                 @if(strtotime($agendas->tanggal) > strtotime($time) )
                     @if(strtotime($agendas->waktu) > strtotime($waktu) || (strtotime($agendas->waktu) < strtotime($waktu)) || (strtotime($agendas->waktu) == strtotime($waktu)))
-                        <div  class="btn btn-warning" width="100" height="50">soon</div>
+                        <div  class="btn btn-warning" width="100" height="50">Mendatang</div>
                     @endif
                 @elseif(strtotime($agendas->tanggal) < strtotime($time))
                      @if(strtotime($agendas->waktu) > strtotime($waktu) || (strtotime($agendas->waktu) < strtotime($waktu)) || (strtotime($agendas->waktu) == strtotime($waktu)))
-                         <div  class="btn btn-danger" width="100" height="50">last</div>
+                         <div  class="btn btn-danger" width="100" height="50">Selesai</div>
                     @endif
                 @else
                      @if(strtotime($agendas->waktu) > strtotime($waktu) )
-                        <div  class="btn btn-warning" width="100" height="50">soon</div>
+                        <div  class="btn btn-warning" width="100" height="50">Mendatang</div>
                     @else
-                        <div  class="btn btn-success" width="100" height="50">now</div>
+                        <div  class="btn btn-primary" width="100" height="50">Saat Ini</div>
                     @endif
                 @endif
                 <td>

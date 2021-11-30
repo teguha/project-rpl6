@@ -1,8 +1,8 @@
 @extends('layouts/master')
 
-@section('title', 'Agenda Edit')
+@section('title', 'Agenda Edit Data')
 
-@section('breadcrumb', 'Agenda Edits')
+@section('breadcrumb', 'Agenda Edit Data')
 @section('content1')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="list.dashboard">Home</a></li>
@@ -11,7 +11,8 @@
 @endsection
 
 @section('content')
-<form action="{{route('agenda-edits',$agenda->id)}}" method="POST" >
+
+<form action="{{route('agenda-edits',$data->id)}}" method="POST" >
         @csrf
         <div class="col-lg-8 col-xlg-9 col-md-7">
             <div class="card">
@@ -21,7 +22,7 @@
                             <label class="col-md-12 mb-0" for="kegiatan">Kegiatan</label>
                             <div class="col-md-12">
                                 <input type="text" placeholder=""
-                                    class="form-control ps-0 form-control-line @error ('kegiatan') is-invalid @enderror" id="kegiatan" name="kegiatan"  value="{{$agenda->kegiatan}}" autofocus>
+                                    class="form-control ps-0 form-control-line @error ('kegiatan') is-invalid @enderror" id="kegiatan" name="kegiatan"  value="{{$data->kegiatan}}" autofocus>
                             </div>
                             <div class="text-danger">
                                 @error('kegiatan')
@@ -34,7 +35,7 @@
                             <div class="col-md-12">
                                 <input type="date" 
                                     class="form-control ps-0 form-control-line @error ('tanggal') is-invalid @enderror" name="tanggal" 
-                                    id="tanggal" name="tanggal" value="{{$agenda->tanggal}}">
+                                    id="tanggal" name="tanggal" value="{{$data->tanggal}}">
                             </div>
                             <div class="text-danger">
                                 @error('tanggal')
@@ -46,7 +47,7 @@
                             <label class="col-md-12 mb-0" for="waktu">Waktu</label>
                             <div class="col-md-12">
                                 <input type="time" 
-                                    class="form-control ps-0 form-control-line @error ('waktu') is-invalid @enderror" id="waktu" name="waktu" value="{{$agenda->waktu}}">
+                                    class="form-control ps-0 form-control-line @error ('waktu') is-invalid @enderror" id="waktu" name="waktu" value="{{$data->waktu}}">
                             </div>
                             <div class="text-danger">
                                 @error('waktu')
@@ -58,13 +59,12 @@
                             <label class="col-md-12 mb-0" for="tempat">Tempat</label>
                             <div class="col-md-12">
                                 <input type="text"
-                                    class="form-control ps-0 form-control-line  @error ('tempat') is-invalid @enderror" id="tempat" name="tempat" value="{{$agenda->tempat}}">
+                                    class="form-control ps-0 form-control-line  @error ('tempat') is-invalid @enderror" id="tempat" name="tempat" value="{{$data->tempat}}">
                             </div>
                             <div class="text-danger">
                                 @error('tempat')
                                     {{ $message }}
                                 @enderror
-
                             </div>
                             <button type="submit" class="btn btn-success mt-3">Simpan</button>
                             <a type="button" class="btn btn-info mt-3" href="{{route('agenda-user')}}">Kembali</a>

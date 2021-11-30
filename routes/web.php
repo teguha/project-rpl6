@@ -32,6 +32,7 @@ Route::post('/proses_login',[AuthController::class,'proses_login'])->name('prose
 Route::post('/user_register',[AuthController::class,'user_registerr'])->name('user-register');
 
 
+
 Route::group(['midlleware'=>['auth']],function(){
     Route::group(['middleware'=>['cek_login:3']],function(){
         Route::get('kr_slumbung',[UserController::class,'logins'])->name('kr_slumbung-dasboard');
@@ -44,6 +45,8 @@ Route::group(['midlleware'=>['auth']],function(){
     Route::group(['middleware'=>['cek_login:1']],function(){
         Route::get('kr_swela',[UserController::class,'logins'])->name('kr_swela-dasboard');
     });
+
+    Route::get('{id}/editAgenda',[UserController::class,'edit_agenda'])->name('agenda-edit');
 
     Route::post('/logout',[AuthController::class,'logout'])->name('user-logout');
 });
@@ -72,10 +75,12 @@ Route::prefix('/dashboard-user')->group(function(){
     Route::get('/{id}/edit-upacara',[AdminController::class,'edit_upacara'])->name('upacara-edit');
     /*----------- save -----------*/
     Route::post('/saveagenda',[UserController::class,'save_agenda'])->name('agenda-save');
-    Route::get('/{id}/editAgenda',[UserController::class,'edit_agenda'])->name('agenda-edit');
-    Route::get('/{id}/editsaveAgenda',[UserController::class,'AgendaEditSave'])->name('agenda-edits');
+  
+    Route::post('/{id}/editsaveAgenda',[UserController::class,'AgendaEditSave'])->name('agenda-edits');
     Route::post('/{id}/deleteagenda',[UserController::class,'delete_agenda'])->name('agenda-delete');
 });
 
 Route::get('/coba',[AdminController::class,'coba_list']);
+Route::get('{id}/banjar_info',[HomeController::class,'info'])->name('views-banjarr');
+Route::get('{id}/sejarah_info',[HomeController::class,'info'])->name('views-sejarah');
 

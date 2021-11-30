@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Posting;
+use App\Models\Banjar;
 use Illuminate\Pagination\Paginator;
 
 class HomeController extends Controller
@@ -42,10 +43,27 @@ class HomeController extends Controller
         );
         
         $image->move(public_path('foto'),$new_image);
-    
         Posting::create($data);
         return redirect('/banjar')->with('succes','data berhasil disimpan');
     }
 
+    public function info($id)
+    {
+        $banjars= Banjar::find($id);
+        return view('info.banjar',compact('banjars'));
+    }
+
+    // public function sejarah($id)
+    // {
+    //     $banjars= Sejarah::find($id);
+
+    //     return view('info.sejarah',compact('banjars'));
+    // }
+    public function sejarahhh($id)
+    {
+        $banjars= Banjar::find($id);
+        $judul =banjar()->name;
+        return view('info.banjar',compact('banjars'));
+    }
     
 }

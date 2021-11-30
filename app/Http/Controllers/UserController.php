@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Agenda;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Crypt;
+
 use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Database\Query\Builder;
@@ -15,7 +17,9 @@ class UserController extends Controller
     public function logins(Request $request){
         session(['banjar_id'=>auth()->User()->banjar_id]);
         session(['level'=>auth()->User()->level]);
-        
+        session(['email'=>auth()->User()->email]);
+    
+     
         $banjar= DB::table('banjar')
         ->where('id','=',auth()->User()->banjar_id)
         ->value('name');
@@ -30,7 +34,7 @@ class UserController extends Controller
         return view('list.dashboard');
     }
 
-    public function profile_list(){
+    public function profile_list(Request $request){
         return view('list.profile');
     }
 
@@ -57,9 +61,9 @@ class UserController extends Controller
         return redirect('/dashboard-user/agenda');
     } 
 
-    public function edit_agenda($id){
-        $agenda= Agenda::find($id);
-        return view('tambah.editAgenda',compact('agenda'));
+    public function edit_agenda($id){  
+        $data= Agenda::find($id);
+        return view('tambah.Edit',compact('data'));
     }
    
 
@@ -96,6 +100,7 @@ class UserController extends Controller
         $agenda->waktu= $request->waktu;
         $agenda->tempat= $request->tempat;
         $agenda->save();
+     
         return redirect('/dashboard-user/agenda');
     }
 

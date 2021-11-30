@@ -75,13 +75,13 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="#">Beranda</a></li>
           <li><a href="#banjar">Banjar</a></li>
-           <li><a href="#service">Service</a></li>
-           <li><a href="#history">History</a></li>
-           <li><a href="#about">About</a></li>
+           <li><a href="#service">Layanan</a></li>
+           <li><a href="#history">Sejarah</a></li>
+           <li><a href="#about">Tentang</a></li>
            <li><a href="#team">Team</a></li>
-           <li><a href="#contact">Contact</a></li>
+           <li><a href="#contact">Kontak</a></li>
           <form action="/login" method="post">
             @csrf
             <button type="submit" class="buttonLogin px-3 py-2">Login</button>
@@ -102,9 +102,9 @@
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
       <h1>Welcome to <span>Banjar</span>
       </h1>
-      <h2>We are team of making BanjarDigital website as A Portal for all Banjars in Bali</h2>
+      <h2>Kami adalah tim yang membuat website BanjarDigital sebagai Portal untuk semua Banjar di Bali</h2>
       <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+        <a href="#about" class="btn-get-started scrollto">Memulai</a>
       </div>
     </div>
   </section>
@@ -114,7 +114,7 @@
     <section id="banjar" class="featured-services">
       <div class="section-title">
         <h2>Banjar</h2>
-        <p>list of banjars that have switched to digital</p>
+        <p>Daftar Banjar Yang Telah Beralih Ke Digital</p>
       </div>
       <section id="slider">
         <div class="container">
@@ -125,7 +125,9 @@
                               <div class="d-flex justify-content-center align-items-center mb-4">
                                   <img src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="" >
                               </div>
-                              <h5 class="mb-0 text-center"><b>{{$banjars->name}}</b></h5>
+                              <h5 class="mb-0 text-center"><b>
+                              <a href="{{route('views-banjarr',$banjars->id)}}">{{$banjars->name}}</a>
+                              </b></h5>
                               <p class="text-center p-4">{{Str::limit($banjars->keterangan,60)}}</p>          
                           </div>
                         @endforeach
@@ -146,8 +148,8 @@
     <section id="service" class="about section-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>Service</h2>
-          <p>We Provide Website Development Services For Your Banjar Needs</p>
+          <h2>Layanan</h2>
+          <p>Kami Menyediakan Jasa Pembuatan Website Untuk Kebutuhan Banjar Anda</p>
         </div>
         <div class="row mt-4">
           <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="100">
@@ -185,8 +187,8 @@
     <section id="history" class="featured-services">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>History</h2>
-            <p>The history of the banjar in bali </p>
+          <h2>Sejarah</h2>
+            <p>Informasi Sejarah </p>
         </div>
       <section id="slider">
         <div class="container">
@@ -197,7 +199,7 @@
                               <div class="d-flex justify-content-center align-items-center mb-4">
                                   <img src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="" >
                               </div>
-                              <h5 class="mb-0 text-center"><b>{{$banjars->name}}</b></h5>
+                              <h5 class="mb-0 text-center"><b><a href="{{route('views-banjarr',$banjars->id)}}">{{$banjars->name}}</a></b></h5>
                               <p class="text-center p-4">{{Str::limit($banjars->keterangan,60)}}</p>          
                           </div>
                         @endforeach
@@ -216,7 +218,6 @@
     </section>
 
 <!-- about section ends -->
-
         {{-- <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
@@ -257,8 +258,8 @@
     <section id="about" class="service section-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>About</h2>
-          <p>About This Website</p>
+          <h2>Tentang</h2>
+          <p>Tentang  Website ini</p>
         </div>
         <div class="container">
         {{-- --------------------------------------------------------------------------------------------- --}}
@@ -282,7 +283,7 @@
 
         <div class="section-title">
           <h2>Team</h2>
-          <p>Our Team From Banjar Digital Website</p>
+          <p>Tim Banjar Digital</p>
         </div>
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">

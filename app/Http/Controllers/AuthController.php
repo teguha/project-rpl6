@@ -38,10 +38,15 @@ class AuthController extends Controller
         $getid = DB::table('banjar')
         ->where([['name','=',$request->banjar_id]])
         ->value('id');
-       
-       
 
+        $getuser = DB::table('users')
+        ->where([['username','=',$request->username]])
+        ->value('username');
         
+        $getmail = DB::table('users')
+        ->where([['email','=',$request->email]])
+        ->value('email');
+
         // User::create([
         //     'name'=>$request->name,
         //     'username'=>$request->username,
@@ -51,37 +56,49 @@ class AuthController extends Controller
         //     'level'=>'anggota'
         // ]);
         
-        $anggota= new User();
-        $anggota->username = $request->username;
-        $anggota->name = $request->name;
-        $anggota->banjar_id=$getid;
-        $anggota->email= $request->email;
-        $anggota->password= bcrypt($request->password);
-        $anggota->level= 'anggota';
-        $anggota->save();
-      
-     
-        return view('loginOuth');
+        if($getuser !=null && $getmail == null ){
+            Alert::error('Login Failed', 'Username Telah Digunakan');
+            return view('registerOuth');
+        }elseif( $getmail !=null && $getuser ==null){
+            Alert::error('Login Failed', 'Email Telah Digunakan');
+            return view('registerOuth');
+        }elseif( $getmail !=null && $getuser !=null){
+            Alert::error('Login Failed', 'Username dan Email Telah Digunakan');
+            return view('registerOuth');
+        }else{
+            if($getid==null){
+                Alert::error('Login Failed', 'Banjar Tidak Terdaftar');
+                return view('registerOuth');
+            }else{
+                $anggota= new User();
+                $anggota->username = $request->username;
+                $anggota->name = $request->name;
+                $anggota->banjar_id=$getid;
+                $anggota->email= $request->email;
+                $anggota->password= bcrypt($request->password);
+                $anggota->level= 'anggota';
+                $anggota->save();
+                return view('loginOuth');
+            }
+        }
     }
 
     public function proses_login(Request $request){
         $request->validate([
             'email'=>'required',
             'username'=>'required',
-            'banjar_id'=>'required',
             'password'=>'required'
         ]);
 
-        $getid = DB::table('banjar')
-        ->where([['name','=',$request->banjar_id]])
-        ->value('id');
-
+        $getid = DB::table('users')
+        ->where([['username','=',$request->username]])
+        ->value('banjar_id');
 
         $kredensil= $request->only('email','username','password');
         if(Auth::attempt($kredensil)){
             $user = Auth::user();
                 if($getid == '1' && auth()->User()->banjar_id =='1'){
-                        return redirect()->intended('kr_swela');         
+                    return redirect()->intended('kr_swela');         
                 }elseif($getid == '3' && auth()->User()->banjar_id == '3'){
                     return redirect()->intended('kr_slumbung');         
                 }else{
