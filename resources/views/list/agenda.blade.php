@@ -9,25 +9,25 @@
         <li class="breadcrumb-item active" aria-current="page">Agenda</li>
     </ol>
 @endsection
-
-{{-- @section('button')
+@if($levels =='admin')
+@section('button')
     <div class="text-end upgrade-bt mr-5">
         <a href="{{ route('agenda-new') }}"
             class="btn btn-success d-none d-md-inline-block text-white">
             Tambah Agenda</a>
     </div>
-@endsection --}}
-
+@endsection
+@endif
 @section('content')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/script.css">
-@if($levels =='admin')
+{{-- @if($levels =='admin')
     <div class="text-end upgrade-bt mr-5">
         <a href="{{ route('agenda-new') }}"
             class="btn btn-success d-none d-md-inline-block text-white">
             Tambah Agenda</a>
     </div>
-@endif
+@endif --}}
     <h1 class="card-title " ></h1>
     <div class="table-responsive">
         <table class="table user-table no-wrap">

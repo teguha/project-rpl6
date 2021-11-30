@@ -50,15 +50,20 @@ class HomeController extends Controller
     public function info($id)
     {
         $banjars= Banjar::find($id);
-
         return view('info.banjar',compact('banjars'));
     }
 
-    public function sejarah($id)
-    {
-        $banjars= Sejarah::find($id);
+    // public function sejarah($id)
+    // {
+    //     $banjars= Sejarah::find($id);
 
-        return view('info.sejarah',compact('banjars'));
+    //     return view('info.sejarah',compact('banjars'));
+    // }
+    public function sejarahhh($id)
+    {
+        $banjars= Banjar::find($id);
+        $judul =banjar()->name;
+        return view('info.banjar',compact('banjars'));
     }
     
 }
