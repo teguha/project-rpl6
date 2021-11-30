@@ -39,8 +39,6 @@ class AuthController extends Controller
         ->where([['name','=',$request->banjar_id]])
         ->value('id');
        
-       
-
         
         // User::create([
         //     'name'=>$request->name,
@@ -60,7 +58,6 @@ class AuthController extends Controller
         $anggota->level= 'anggota';
         $anggota->save();
       
-     
         return view('loginOuth');
     }
 
@@ -68,20 +65,18 @@ class AuthController extends Controller
         $request->validate([
             'email'=>'required',
             'username'=>'required',
-            'banjar_id'=>'required',
             'password'=>'required'
         ]);
 
-        $getid = DB::table('banjar')
-        ->where([['name','=',$request->banjar_id]])
-        ->value('id');
-
+        $getid = DB::table('users')
+        ->where([['username','=',$request->username]])
+        ->value('banjar_id');
 
         $kredensil= $request->only('email','username','password');
         if(Auth::attempt($kredensil)){
             $user = Auth::user();
                 if($getid == '1' && auth()->User()->banjar_id =='1'){
-                        return redirect()->intended('kr_swela');         
+                    return redirect()->intended('kr_swela');         
                 }elseif($getid == '3' && auth()->User()->banjar_id == '3'){
                     return redirect()->intended('kr_slumbung');         
                 }else{

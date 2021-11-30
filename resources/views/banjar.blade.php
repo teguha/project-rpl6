@@ -125,7 +125,7 @@
                               <div class="d-flex justify-content-center align-items-center mb-4">
                                   <img src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="" >
                               </div>
-                              <h5 class="mb-0 text-center"><b>{{$banjars->name}}</b></h5>
+                              <h5 class="mb-0 text-center"><b><a href="{{route('views-banjarr',$banjars->id)}}">{{$banjars->name}}</a></b></h5>
                               <p class="text-center p-4">{{Str::limit($banjars->keterangan,60)}}</p>          
                           </div>
                         @endforeach
@@ -197,7 +197,7 @@
                               <div class="d-flex justify-content-center align-items-center mb-4">
                                   <img src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="" >
                               </div>
-                              <h5 class="mb-0 text-center"><b>{{$banjars->name}}</b></h5>
+                              <h5 class="mb-0 text-center"><b><a href="{{route('views-banjarr',$banjars->id)}}">{{$banjars->name}}</a></b></h5>
                               <p class="text-center p-4">{{Str::limit($banjars->keterangan,60)}}</p>          
                           </div>
                         @endforeach
