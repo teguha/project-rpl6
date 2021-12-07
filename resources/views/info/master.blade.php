@@ -43,9 +43,6 @@
     <section id="hero" class="d-flex align-items-center" style="height: 10vh;">
         </section>
     <!-- End Hero -->
-        @yield('nav')
-        <div class="container">
-        <h1 class="mt-3 text-center"> @yield('header')</h1>
         @yield('contents')
         
         @include('layouts/footer')

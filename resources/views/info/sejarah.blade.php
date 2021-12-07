@@ -1,4 +1,4 @@
-@extends('info.tampilan')
+@extends('info.master')
 
 @section('title','Blog post')
 
@@ -38,7 +38,7 @@
 <!-- Post title-->
 <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
 <!-- Post meta content-->
-<div class="text-muted fst-italic mb-2">Posted on {{$banjars->created_at}}, 2021 by Banjar Digital</div>
+<div class="text-muted fst-italic mb-2">Posted on {{$sejarahs->created_at}}, 2021 by Banjar Digital</div>
 <!-- Post categories-->
 <h4><span class="badge badge-dark">Bali</span> <span class="badge badge-dark">Banjar</span>
  <span class="badge badge-dark">Digital</span> <span class="badge badge-dark">Banjar</span></h4>
@@ -48,9 +48,9 @@
 <div class="row">
     <div class="col-lg-8">
         <article>
-        <figure class="mb-2"><img class="img-fluid rounded" src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="..." width="1000" height="300" /></figure>
-        <h3 class="dashboard-title"><b class="center">{{ $banjars->name }}</b></h3>
-        <p class="dashboard-text ">{{$banjars->keterangan}}</p>
+        <figure class="mb-2"><img class="img-fluid rounded" src="{{URL::to('/')}}/foto/{{$sejarahs->gambar}}" alt="..." width="1000" height="300" /></figure>
+        <h3 class="dashboard-title"><b class="center">{{ $sejarahs->name }}</b></h3>
+        <p class="dashboard-text ">{{$sejarahs->konten}}</p>
     </div>
     </article>
      <div class="col-lg-4">

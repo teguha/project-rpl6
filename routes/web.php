@@ -87,6 +87,7 @@ Route::prefix('/dashboard-user')->group(function(){
 
 Route::get('/coba',[AdminController::class,'coba_list']);
 Route::get('{id}/banjar_info',[HomeController::class,'info'])->name('views-banjarr');
+Route::get('{id}/sejarah_info',[HomeController::class,'info_sej'])->name('views-sejarah');
 Route::get('/sejarah',[HomeController::class,'sejarah'])->name('add-sejarah');
 Route::post('sejarah_info',[HomeController::class,'info_sejarah'])->name('posting-sejarah');
 

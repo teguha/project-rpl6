@@ -54,8 +54,16 @@ class HomeController extends Controller
         $banjars= Banjar::find($id);
         $data=Posting::latest()->paginate(100);
         Paginator::useBootstrap();
-        return view('info.banjar',compact('data', 'banjars'));
+        return view('info.banjar', compact('data', 'banjars'));
 
+    }
+    
+    public function info_sej($id)
+    {
+        $sejarahs= Sejarah::find($id);
+        $data=Posting::latest()->paginate(100);
+        Paginator::useBootstrap();
+        return view('info.sejarah', compact('data', 'sejarahs'));
     }
 
     public function sejarah(){
