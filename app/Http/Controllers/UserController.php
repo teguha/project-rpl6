@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Agenda;
 use App\Models\message;
+use App\Models\Upacara;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Crypt;
@@ -112,8 +113,81 @@ class UserController extends Controller
         return redirect('dashboard-user/agenda');
     }
 
-    public function upacara_list(){
-        return view('list.upacara');
+    public function new_upacara(){
+        return view('tambah.upacara');
+    }
+
+    public function save_upacara(Request $request){
+        $request->validate([
+            'kegiatan'=>'required',
+            'tanggal'=>'required',
+            'waktu'=>'required',
+            'tempat'=>'required',
+            'ketentuan'=>'required'
+        ]);
+        $datas= $request->session()->get('banjar_id');
+     
+        $upacara= new upacara();
+        $upacara->banjar_id = $datas;
+        $upacara->kegiatan = $request->kegiatan;
+        $upacara->tanggal=$request->tanggal;
+        $upacara->waktu= $request->waktu;
+        $upacara->tempat= $request->tempat;
+        $upacara->ketentuan= $request->ketentuan;
+        $upacara->save();
+        return redirect('/dashboard-user/upacara');
+    } 
+
+    public function edit_upacara($id){  
+        $data= Upacara::find($id);
+        return view('tambah.EditUpacara',compact('data'));
+    }
+   
+
+    public function upacara_list(Request $request){
+        $datas= $request->session()->get('banjar_id');
+        $hasils = Upacara::with('banjar')
+        ->where([['banjar_id','=',$datas]])
+        ->latest('updated_at')->paginate(5);
+        $hasil= $hasils;
+       
+        $levels= $request->session()->get('level');
+        date_default_timezone_set("Asia/Makassar");
+        $time = date("y-m-d");
+        $waktu = date("H:i:s");
+        // $time= Carbon::now();
+        // $hari= date('yyyy-mm-dd');
+        // $time->toDateString($hari);
+        Paginator::useBootstrap();
+        return view('list.upacara',compact('hasil','time','waktu','levels'));
+    }
+
+    public function UpacaraEditSave(Request $request, $id){
+        $request->validate([
+            'kegiatan'=>'required',
+            'waktu'=>'required',
+            'tanggal'=>'required',
+            'tempat'=>'required',
+            'ketentuan'=>'required',
+        ]);
+        $datas= $request->session()->get('banjar_id');
+        $upacara= Upacara::find($id);
+        $upacara->kegiatan = $request->kegiatan;
+        $upacara->tanggal= $request->tanggal;
+        $upacara->banjar_id=$datas;
+        $upacara->waktu= $request->waktu;
+        $upacara->tempat= $request->tempat;
+        $upacara->ketentuan= $request->ketentuan;
+        $upacara->save();
+     
+        return redirect('/dashboard-user/upacara');
+    }
+
+    public function delete_upacara($id){
+        $upacara= Upacara::find($id);
+        $upacara->delete();
+        Alert::success('success', 'Berhasil dihapus');
+        return redirect('dashboard-user/upacara');
     }
 
     public function message(Request $request){

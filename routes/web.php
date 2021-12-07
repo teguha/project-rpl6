@@ -49,6 +49,7 @@ Route::group(['midlleware'=>['auth']],function(){
     Route::get('/{id}/edit-Agenda',[UserController::class,'edit_agenda'])->name('agenda-edit');
     Route::get('/{id}/edit-upacara',[UserController::class,'edit_upacara'])->name('upacara-edit');
     Route::post('/logout',[AuthController::class,'logout'])->name('user-logout');
+    
 });
 
 
@@ -83,6 +84,9 @@ Route::prefix('/dashboard-user')->group(function(){
   
     Route::post('/{id}/editsaveAgenda',[UserController::class,'AgendaEditSave'])->name('agenda-edits');
     Route::post('/{id}/deleteagenda',[UserController::class,'delete_agenda'])->name('agenda-delete');
+
+    Route::post('/{id}/editsaveUpacara',[UserController::class,'UpacaraEditSave'])->name('upacara-edits');
+    Route::post('/{id}/deleteupacara',[UserController::class,'delete_upacara'])->name('upacara-delete');
 });
 
 Route::get('/coba',[AdminController::class,'coba_list']);

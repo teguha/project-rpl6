@@ -15,4 +15,9 @@ class Posting extends Model
     {
         return $this->hasMany(Agenda::class, 'banjar_id');
     }
+
+    public function upacara()
+    {
+        return $this->hasMany(Upacara::class, 'banjar_id');
+    }
 }
