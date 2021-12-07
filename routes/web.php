@@ -75,6 +75,7 @@ Route::prefix('/dashboard-user')->group(function(){
  
     /*----------- save -----------*/
     Route::post('/saveagenda',[UserController::class,'save_agenda'])->name('agenda-save');
+    Route::post('/saveupacara',[UserController::class,'save_upacara'])->name('upacara-save');
   
     Route::post('/{id}/editsaveAgenda',[UserController::class,'AgendaEditSave'])->name('agenda-edits');
     Route::post('/{id}/deleteagenda',[UserController::class,'delete_agenda'])->name('agenda-delete');
@@ -85,3 +86,4 @@ Route::get('{id}/banjar_info',[HomeController::class,'info'])->name('views-banja
 Route::get('/sejarah',[HomeController::class,'sejarah'])->name('add-sejarah');
 Route::post('sejarah_info',[HomeController::class,'info_sejarah'])->name('posting-sejarah');
 
+Route::get('/blogBanjar',[HomeController::class,'blog'])->name('blog-view');

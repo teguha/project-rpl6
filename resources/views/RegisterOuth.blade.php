@@ -17,10 +17,10 @@
         <div class="container">
             <div class="row no-gutters">
                 <div class="col-lg-5">
-                    <img src="rpl/log1.jpg" class="img" alt="">
+                    <img src="rpl/log3.jpg" class="img" alt="">
                 </div>
-                <div class="col-lg-7 px-5 pt-5 mt-4">
-                    <h1 class="font-weight-bold-py-3">REGISTER</h1>
+                <div class="col-lg-7 px-5 pt-3">
+                    <img class="mb-3" src="../assets2/images/logo-icon2.png" width="300" alt="">
                     <h4>Register To Banjar</h4>
                     <form action="{{route('user-register')}}" method="post">
                     @csrf
@@ -82,7 +82,7 @@
                     </form>
                     <form action="/login" method="post">
                         @csrf
-                        <p>have an account ?<button type="submit" class="logOut py-2">Login</button>register here </a>now<p>
+                        <p>have an account ?<button type="submit" class="logOut py-2 px-2"> Login </button>register here </a>now<p>
                     </form>
                 </div>
             </div>
