@@ -4,7 +4,6 @@
 
 @section('header','Add Postingan')
 
-
 @section('contents')
 
 <form  action="{{route('posting')}}" method="post" enctype="multipart/form-data">

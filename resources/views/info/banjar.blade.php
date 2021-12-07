@@ -3,15 +3,15 @@
 @section('title','Blog post')
 
 @section('nav')
- <nav class="navbar navbar-dark bg-light justify-content-between"> 
+
+<nav class="navbar navbar-dark bg-light justify-content-between"> 
 <div class="container mx-auto">
-{{--    
-   <img src="../assets2/images/logo-icon1.png"  alt="homepage" class="dark-logo" /> --}}
+
+   {{-- <img src="../assets2/images/logo-icon1.png"  alt="homepage" class="dark-logo" /> --}} 
    {{-- <a class=" nav-link  my-2 my-sm-0 active " aria-current="page">Blog</a> --}}
 </div>
 </nav>
 @endsection
-
 @section('contents')
 <header class="mb-3">
 <!-- Post title-->
