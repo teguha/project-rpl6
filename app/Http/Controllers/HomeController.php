@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Posting;
 use App\Models\Banjar;
+use App\Models\Sejarah;
 use Illuminate\Pagination\Paginator;
 
 class HomeController extends Controller
@@ -22,9 +23,10 @@ class HomeController extends Controller
 
 
     public function banjar(){
-        $data=Posting::latest()->paginate(100);
+        $data=Banjar::latest()->paginate(100);
+        $sejarah=Sejarah::latest()->paginate(500);
         Paginator::useBootstrap();
-        return view('banjar',compact('data'));
+        return view('banjar',compact('data','sejarah'));
     }
 
     public function Savedd(Request $request){
@@ -56,17 +58,29 @@ class HomeController extends Controller
 
     }
 
-    // public function sejarah($id)
-    // {
-    //     $banjars= Sejarah::find($id);
+    public function sejarah(){
+        return view('Admin.addSejarah');
+    }
 
-    //     return view('info.sejarah',compact('banjars'));
-    // }
-    public function sejarahhh($id)
+    public function info_sejarah(Request $request)
     {
-        $banjars= Banjar::find($id);
-        $judul =banjar()->name;
-        return view('info.banjar',compact('banjars'));
+        $request->validate([
+            'judul' => 'required',
+            'konten'=> 'required',
+            'foto'=>'required|image|mimes:jepg,png,jpg|max:2048'
+        ]);
+
+        $image = $request->file('foto');
+        $image_name= rand().".".$image ->getClientOriginalExtension();
+       
+        $data= array(
+            'judul'=> $request->judul,
+            'konten'=> $request->konten,
+            'gambar'=> $image_name 
+        );
+        $image->move(public_path('foto'),$image_name);
+        Sejarah::create($data);
+        return redirect('/banjar');
     }
     
     public function blog($id){

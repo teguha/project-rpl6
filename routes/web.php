@@ -46,10 +46,8 @@ Route::group(['midlleware'=>['auth']],function(){
         Route::get('kr_swela',[UserController::class,'logins'])->name('kr_swela-dasboard');
     });
 
-    /*----------- edit -----------*/
-    Route::get('/{id}/edit-agenda',[UserController::class,'edit_agenda'])->name('agenda-edit');
+    Route::get('/{id}/edit-Agenda',[UserController::class,'edit_agenda'])->name('agenda-edit');
     Route::get('/{id}/edit-upacara',[UserController::class,'edit_upacara'])->name('upacara-edit');
-
     Route::post('/logout',[AuthController::class,'logout'])->name('user-logout');
     
 });
@@ -73,6 +71,9 @@ Route::prefix('/dashboard-user')->group(function(){
     Route::get('/newagenda',[UserController::class,'new_agenda'])->name('agenda-new');
     Route::get('/newupacara',[UserController::class,'new_upacara'])->name('upacara-new');
 
+    /*----------- edit -----------*/
+    // Route::get('/{id}/edit-agenda',[AdminController::class,'edit_agenda'])->name('agenda-edit');
+ 
     /*----------- save -----------*/
     Route::post('/saveagenda',[UserController::class,'save_agenda'])->name('agenda-save');
     Route::post('/saveupacara',[UserController::class,'save_upacara'])->name('upacara-save');
@@ -86,6 +87,7 @@ Route::prefix('/dashboard-user')->group(function(){
 
 Route::get('/coba',[AdminController::class,'coba_list']);
 Route::get('{id}/banjar_info',[HomeController::class,'info'])->name('views-banjarr');
-Route::get('{id}/sejarah_info',[HomeController::class,'info'])->name('views-sejarah');
+Route::get('/sejarah',[HomeController::class,'sejarah'])->name('add-sejarah');
+Route::post('sejarah_info',[HomeController::class,'info_sejarah'])->name('posting-sejarah');
 
 Route::get('/blogBanjar',[HomeController::class,'blog'])->name('blog-view');

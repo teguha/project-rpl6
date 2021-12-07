@@ -194,13 +194,13 @@
         <div class="container">
             <div class="slider">
                       <div class="owl-carousel">
-                        @foreach ($data as $banjars)
+                        @foreach ($sejarah as $banjars)
                           <div class="show-slider">
                               <div class="d-flex justify-content-center align-items-center mb-4">
                                   <img src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="" >
                               </div>
-                              <h5 class="mb-0 text-center"><b><a href="{{route('views-banjarr',$banjars->id)}}">{{$banjars->name}}</a></b></h5>
-                              <p class="text-center p-4">{{Str::limit($banjars->keterangan,60)}}</p>          
+                              <h5 class="mb-0 text-center"><b><a href="{{route('views-banjarr',$banjars->id)}}">{{$banjars->judul}}</a></b></h5>
+                              <p class="text-center p-4">{{Str::limit($banjars->konten,60)}}</p>          
                           </div>
                         @endforeach
                       </div>
@@ -213,7 +213,7 @@
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" ></script>
           <script src="js/owl.carousel.min.js"></script>
           <script src="js/script2.js"></script>
-          {{$data->links()}}
+          {{$sejarah->links()}}
 		
     </section>
 

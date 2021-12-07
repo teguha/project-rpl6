@@ -51,4 +51,14 @@ class AdminController extends Controller
     public function save_agenda(Request $request){
        
     }
+
+    
+    // public function edit_agenda($id){  
+    //     $data= Agenda::find($id);
+    //     return view('tambah.Edit',compact('data'));
+    // }
+   
+
+    
+
 }
