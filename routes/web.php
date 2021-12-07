@@ -84,3 +84,4 @@ Route::get('/coba',[AdminController::class,'coba_list']);
 Route::get('{id}/banjar_info',[HomeController::class,'info'])->name('views-banjarr');
 Route::get('{id}/sejarah_info',[HomeController::class,'info'])->name('views-sejarah');
 
+Route::get('/blogBanjar',[HomeController::class,'blog'])->name('blog-view');

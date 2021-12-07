@@ -43,14 +43,17 @@ class HomeController extends Controller
         );
         
         $image->move(public_path('foto'),$new_image);
+    
         Posting::create($data);
         return redirect('/banjar')->with('succes','data berhasil disimpan');
     }
-
     public function info($id)
     {
         $banjars= Banjar::find($id);
-        return view('info.banjar',compact('banjars'));
+        $data=Posting::latest()->paginate(100);
+        Paginator::useBootstrap();
+        return view('info.banjar',compact('data', 'banjars'));
+
     }
 
     // public function sejarah($id)
@@ -66,4 +69,10 @@ class HomeController extends Controller
         return view('info.banjar',compact('banjars'));
     }
     
+    public function blog($id){
+        $banjars= Banjar::find($id);
+        $data=Posting::latest()->paginate(100);
+        Paginator::useBootstrap();
+        return view('info/tampilan',compact('data', 'banjars'));
+    }
 }

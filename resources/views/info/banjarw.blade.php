@@ -1,4 +1,4 @@
-@extends('info.lay')
+@extends('info.tampilan')
 
 @section('title', 'banjar info')
 

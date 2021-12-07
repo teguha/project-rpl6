@@ -54,14 +54,21 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand ml-2" href="index.html">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="../assets2/images/logo-icon1.png" alt="homepage" class="dark-logo" />
+                            <img src="../assets2/images/logo-icon.png" alt="homepage" class="dark-logo" />
+
                         </b>
                         <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span class="logo-text">
+                            <!-- dark Logo text -->
+                            <img src="../assets2/images/logo-text.png" alt="homepage" class="dark-logo" />
+
+                        </span>
                     </a>
                     <!-- ============================================================== -->
                     <!-- End Logo -->

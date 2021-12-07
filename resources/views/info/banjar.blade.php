@@ -1,18 +1,9 @@
-@extends('info.tampilan')
+@extends('info/tampilan')
 
 @section('title','Blog post')
 
-@section('nav')
- <nav class="navbar navbar-dark bg-light justify-content-between"> 
-<div class="container mx-auto">
-{{--    
-   <img src="../assets2/images/logo-icon1.png"  alt="homepage" class="dark-logo" /> --}}
-   {{-- <a class=" nav-link  my-2 my-sm-0 active " aria-current="page">Blog</a> --}}
-</div>
-</nav>
-@endsection
-
 @section('contents')
+
 <header class="mb-3">
 <!-- Post title-->
 <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
@@ -76,11 +67,8 @@
         </div>
     </div>
 </div>  
-    </article>
-    <footer class="py-3 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Banjar Digital 2021</p></div>
-    </footer>
-     
+
 @endsection
+
 
 
