@@ -46,9 +46,12 @@ Route::group(['midlleware'=>['auth']],function(){
         Route::get('kr_swela',[UserController::class,'logins'])->name('kr_swela-dasboard');
     });
 
-    Route::get('{id}/editAgenda',[UserController::class,'edit_agenda'])->name('agenda-edit');
+    /*----------- edit -----------*/
+    Route::get('/{id}/edit-agenda',[UserController::class,'edit_agenda'])->name('agenda-edit');
+    Route::get('/{id}/edit-upacara',[UserController::class,'edit_upacara'])->name('upacara-edit');
 
     Route::post('/logout',[AuthController::class,'logout'])->name('user-logout');
+    
 });
 
 
@@ -70,15 +73,15 @@ Route::prefix('/dashboard-user')->group(function(){
     Route::get('/newagenda',[UserController::class,'new_agenda'])->name('agenda-new');
     Route::get('/newupacara',[UserController::class,'new_upacara'])->name('upacara-new');
 
-    /*----------- edit -----------*/
-    Route::get('/{id}/edit-agenda',[UserController::class,'edit_agenda'])->name('agenda-edit');
-    Route::get('/{id}/edit-upacara',[UserController::class,'edit_upacara'])->name('upacara-edit');
     /*----------- save -----------*/
     Route::post('/saveagenda',[UserController::class,'save_agenda'])->name('agenda-save');
     Route::post('/saveupacara',[UserController::class,'save_upacara'])->name('upacara-save');
   
     Route::post('/{id}/editsaveAgenda',[UserController::class,'AgendaEditSave'])->name('agenda-edits');
     Route::post('/{id}/deleteagenda',[UserController::class,'delete_agenda'])->name('agenda-delete');
+
+    Route::post('/{id}/editsaveUpacara',[UserController::class,'UpacaraEditSave'])->name('upacara-edits');
+    Route::post('/{id}/deleteupacara',[UserController::class,'delete_upacara'])->name('upacara-delete');
 });
 
 Route::get('/coba',[AdminController::class,'coba_list']);

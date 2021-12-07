@@ -2,59 +2,117 @@
 
 @section('title', 'Upacara User')
 
-
-@section('breadcrumb', 'Upacara')
+@section('breadcrumb', 'Upacara User')
 @section('content1')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Upacara</li>
     </ol>
 @endsection
-
-
-    @section('button')
-        <div class="text-end upgrade-bt mr-5">
-            <a href="{{ route('upacara-new') }}"
-                class="btn btn-success d-none d-md-inline-block text-white">
-                Tambah Upacara</a>
-        </div>
-    @endsection
-
-
+@if($levels =='admin')
+@section('button')
+    <div class="text-end upgrade-bt mr-5">
+        <a href="{{ route('upacara-new') }}"
+            class="btn btn-success d-none d-md-inline-block text-white">
+            Tambah Upacara</a>
+    </div>
+@endsection
+@endif
 @section('content')
-        <h4 class="card-title">List Upacara</h4>
-        <div class="table-responsive">
-            <table class="table user-table no-wrap">
-                <thead>
-                    <tr>
-                        <th class="border-top-0">NO</th>
-                        <th class="border-top-0">UPACARA</th>
-                        <th class="border-top-0">TANGGAL</th>
-                        <th class="border-top-0">WAKTU</th>
-                        <th class="border-top-0">TEMPAT</th>
-                        <th class="border-top-0">KETENTUAN</th>
-                        <th class="border-top-0">ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/script.css">
+{{-- @if($levels =='admin')
+    <div class="text-end upgrade-bt mr-5">
+        <a href="{{ route('upacara-new') }}"
+            class="btn btn-success d-none d-md-inline-block text-white">
+            Tambah Upacara</a>
+    </div>
+@endif --}}
+    <h1 class="card-title " ></h1>
+    <div class="table-responsive">
+        <table class="table user-table no-wrap">
+            <thead>
+                <tr>
+                    <th class="border-top-0">NO</th>
+                    <th class="border-top-0">KEGIATAN</th>
+                    <th class="border-top-0">TANGGAL</th>
+                    <th class="border-top-0">WAKTU</th>
+                    <th class="border-top-0">TEMPAT</th>
+                    <th class="border-top-0">KETENTUAN</th>
+                    @if($levels =='admin')
+                    <th class="border-top-0">ACTION</th>
+                    @endif
+                    <th class="border-top-0">STATUS</th>
+                </tr>
+            </thead>
+            <tbody>
+             @foreach ($hasil as $upacaras)
+            <tr>
+                <th scope="row">{{ $loop->index+1+($hasil->currentPage()-1)*5}} </th>     <!--  looping dari metdhod index pada controller -->
+                <td>{{ $upacaras->kegiatan }} </td>                  
+                <td>{{ $upacaras->tanggal }} </td>    
+                <td>{{ $upacaras->waktu }} </td>
+                <td>{{ $upacaras->tempat}} </td>
+                <td>{{ Str::limit($upacaras->ketentuan, 10) }} </td>
+                @if($levels =='admin')
+                <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    @csrf
+                    <a type="button" class="btn btn-info" href="{{route('upacara-edit', $upacaras->id)}}">Edit</a>      
+                </div>
+                <form action="{{route('upacara-delete',$upacaras->id)}}" method='post' class='d-inline'onsubmit="return confirm('Apakah kamu yakin ingin menghapus upacara ini ?')">     
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                 </form> 
+                </td>
+                @endif
+                <td>
+                @if(strtotime($upacaras->tanggal) > strtotime($time) )
+                    @if(strtotime($upacaras->waktu) > strtotime($waktu) || (strtotime($upacaras->waktu) < strtotime($waktu)) || (strtotime($upacaras->waktu) == strtotime($waktu)))
+                        <div  class="btn btn-warning" width="100" height="50">Mendatang</div>
+                    @endif
+                @elseif(strtotime($upacaras->tanggal) < strtotime($time))
+                     @if(strtotime($upacaras->waktu) > strtotime($waktu) || (strtotime($upacaras->waktu) < strtotime($waktu)) || (strtotime($upacaras->waktu) == strtotime($waktu)))
+                         <div  class="btn btn-danger" width="100" height="50">Selesai</div>
+                    @endif
+                @else
+                     @if(strtotime($upacaras->waktu) > strtotime($waktu) )
+                        <div  class="btn btn-warning" width="100" height="50">Mendatang</div>
+                    @else
+                        <div  class="btn btn-primary" width="100" height="50">Saat Ini</div>
+                    @endif
+                @endif
+                <td>
+            @endforeach
+                {{-- <tr>
                     <td class="border-top-0">1</td>
-                    <td class="border-top-0">Piodalan Sasih Kapitu</td>
-                    <td class="border-top-0">2021-10-15</td>
-                    <td class="border-top-0">07:00</td>
-                    <td class="border-top-0">Pura Pusering Jagat</td>
-                    <td class="border-top-0">Pakaian adat lengkap ..</td>
-                    <td><form action="" method="POST">
+                    <td class="border-top-0">Rapat Teknis</td>
+                    <td class="border-top-0">2021-11-20</td>
+                    <td class="border-top-0">09:00</td>
+                    <td class="border-top-0">Banjar Slumbung</td>
+                    <td class="border-top-0"></td> --}}
+                    {{-- <td><form action="" method="POST">
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 @csrf
                                 <a type="button" class="btn btn-info" href="">Edit</a>
                                 <button type="submit" class="btn btn-danger"
-                                    onclick="return confirm('apakah kamu yakin menghapus data ini ?')">Hapus</button>
+                                    onclick="return confirm('apakah kamu yakin menghapus data ini ?')">Delete</button>
                             </div>
-                    </form></td>
-                    </tr>
-                </tbody>
-            </table>
+                    </form></td> --}}
+                </tr>
+            </tbody>
+        </table>
+        <div class='mt-4 text-center'>
+            showing
+            {{ $hasil->firstItem() }}
+            to
+            {{ $hasil->lastItem() }}  
+            of
+            {{ $hasil->total()   }} 
         </div>
+        <div>
+            {{ $hasil->links() }}
+        </div>
+    </div>
+    @include('sweetalert::alert');
 @endsection
-                            
