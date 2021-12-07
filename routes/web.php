@@ -54,6 +54,10 @@ Route::group(['midlleware'=>['auth']],function(){
 
 
 Route::get('/banjar',[HomeController::class,'banjar'])->name('banjar-view');
+Route::post('message_save',[UserController::class,'message'])->name('message-save');
+Route::get('message_data',[UserController::class,'message_data'])->name('message-view');
+Route::get('/{id}/message-detail',[UserController::class,'message_detail'])->name('message-details');
+Route::post('/{id}/message-delete',[UserController::class,'message_delete'])->name('message-delete');
 
 Route::get('/posting',[HomeController::class,'posting'])->name('login-view');
 

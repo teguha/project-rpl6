@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Agenda;
+use App\Models\message;
 use App\Models\Upacara;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
@@ -187,5 +188,40 @@ class UserController extends Controller
         $upacara->delete();
         Alert::success('success', 'Berhasil dihapus');
         return redirect('dashboard-user/upacara');
+    }
+
+    public function message(Request $request){
+        $request->validate([
+            'nama'=>'required',
+            'email'=>'required',
+            'subject'=>'required',
+            'message'=>'required'
+        ]);
+
+        $data = new message();
+        $data->nama =$request->nama;
+        $data->email =$request->email;
+        $data->subject =$request->subject;
+        $data->message =$request->message;
+        $data->save();
+        return redirect('message_data');
+    }
+
+    public function message_data(){
+        $message = message::latest()->paginate(5);
+        Paginator::useBootstrap();
+        return view('message',compact('message'));
+    }
+
+    public function message_detail($id){
+        $message = message::find($id);
+        return view('messageEdit',compact('message'));
+    }
+
+    public function message_delete($id){
+        $message = message::find($id);
+        $message->delete();
+        Alert::success('success', 'Berhasil dihapus');
+        return redirect('message_data');
     }
 }
