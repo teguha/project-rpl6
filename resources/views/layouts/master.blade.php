@@ -19,8 +19,8 @@
     <!-- Custom CSS -->
     <link href="../assets2/plugins/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css2/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css2/style.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css2/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css2/style.min.css') }}">
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -175,18 +175,18 @@
     <script src="../assets2/plugins/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../assets2/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="{{ asset('js2/app-style-switcher.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js2/app-style-switcher.js') }}"></script>
     <!--Wave Effects -->
-    <script type="text/javascript" src="{{ asset('js2/waves.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js2/waves.js') }}"></script>
     <!--Menu sidebar -->
-    <script type="text/javascript" src="{{ asset('js2/sidebarmenu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js2/sidebarmenu.js') }}"></script>
     <!--Custom JavaScript -->
-    <script type="text/javascript" src="{{ asset('js2/custom.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js2/custom.js') }}"></script>
     <!--This page JavaScript -->
     <!--flot chart-->
     <script src="../assets2/plugins/flot/jquery.flot.js"></script>
     <script src="../assets2/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-    <script type="text/javascript" src="{{ asset('js2/pages/dashboards/dashboard1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js2/pages/dashboards/dashboard1.js') }}"></script>
     
 </body>
 

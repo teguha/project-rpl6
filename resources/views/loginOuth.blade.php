@@ -17,11 +17,11 @@
         <div class="container">
             <div class="row no-gutters">
                 <div class="col-lg-5">
-                    <img src="rpl/log1.jpg" class="img" alt="">
+                    <img src="rpl/log2.jpg" class="img" alt="">
                 </div>
-                <div class="col-lg-7 px-5 pt-5 mt-4">
-                    <h1 class="font-weight-bold-py-3">LOGO</h1>
-                     
+                <div class="col-lg-7 px-5 pt-5">
+                    <img class="mb-3" src="../assets2/images/logo-icon2.png" width="300" alt="">
+                    
                     <h4>Sign To Banjar</h4>
                     <form action="{{route('proses_login')}}" method="post">
                     @csrf
@@ -64,7 +64,7 @@
                     </form>
                     <form action="/register" method="post">
                         @csrf
-                        <p>dont have an account ?<button type="submit" class="logOut px-3 py-2">register</button>here </a>now<p>
+                        <p>dont have an account ?<button type="submit" class="logOut px-2 py-2">register</button>here </a>now<p>
                     </form>
                 </div>
             </div>

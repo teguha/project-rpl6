@@ -71,10 +71,11 @@ Route::prefix('/dashboard-user')->group(function(){
     Route::get('/newupacara',[UserController::class,'new_upacara'])->name('upacara-new');
 
     /*----------- edit -----------*/
-    Route::get('/{id}/edit-agenda',[AdminController::class,'edit_agenda'])->name('agenda-edit');
-    Route::get('/{id}/edit-upacara',[AdminController::class,'edit_upacara'])->name('upacara-edit');
+    Route::get('/{id}/edit-agenda',[UserController::class,'edit_agenda'])->name('agenda-edit');
+    Route::get('/{id}/edit-upacara',[UserController::class,'edit_upacara'])->name('upacara-edit');
     /*----------- save -----------*/
     Route::post('/saveagenda',[UserController::class,'save_agenda'])->name('agenda-save');
+    Route::post('/saveupacara',[UserController::class,'save_upacara'])->name('upacara-save');
   
     Route::post('/{id}/editsaveAgenda',[UserController::class,'AgendaEditSave'])->name('agenda-edits');
     Route::post('/{id}/deleteagenda',[UserController::class,'delete_agenda'])->name('agenda-delete');
