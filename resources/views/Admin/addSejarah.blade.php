@@ -39,15 +39,9 @@
     <input id="konten" type="hidden" name="konten">
     <trix-editor input="konten"></trix-editor>
   </div>
-<<<<<<< HEAD
   <div class="mt-2">
     <button type="submit" class="btn btn-success">Simpan</button>
     <a type="button" class="btn btn-info" href="{{ route('add-postingan') }}">Kembali</a>
-=======
-  <div class="mt-3">
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a type="button" class="btn btn-success" href="{{route('banjar-view')}}">back</a>
->>>>>>> 15f2203850aee8869d56f2b7627ae196816722a8
   </div>
 </form>
 </div>

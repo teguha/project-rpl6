@@ -12,7 +12,7 @@
     <meta name="description"
         content="Monster Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Agenda Edit</title>
+    <title>Message Detail</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/monster-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets2/images/favicon.png">
@@ -143,7 +143,7 @@
                     <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{route('message-details', $message->id)}}" method="POST" >
+                                <form action="{{route('message-detail', $message->id)}}" method="POST" >
                                     @csrf
                                         <div class="col-lg-8 col-xlg-9 col-md-7">
                                             <div class="card">

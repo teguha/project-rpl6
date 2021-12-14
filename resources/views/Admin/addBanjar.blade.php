@@ -41,15 +41,9 @@
     <input id="keterangan" type="hidden" name="keterangan">
     <trix-editor input="keterangan"></trix-editor>
   </div>
-<<<<<<< HEAD:resources/views/Admin/addBanjar.blade.php
   <div class="mb-3">
     <button type="submit" class="btn btn-success">Simpan</button>
     <a type="button" class="btn btn-info" href="{{ route('add-postingan') }}">Kembali</a>
-=======
-  <div class="mt-3">
-    <button type="submit" class="btn btn-primary mb-3">Save</button>
-    <a type="button" class="btn btn-success mb-3" href="  ">back</a>
->>>>>>> 15f2203850aee8869d56f2b7627ae196816722a8:resources/views/Admin/addPost.blade.php
   </div>
 </form>
 @endsection

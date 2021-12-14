@@ -42,8 +42,10 @@ class UserController extends Controller
     }
 
     public function profile_list(Request $request){
+        session(['level'=>auth()->User()->level]);
+        $levels= $request->session()->get('level');       
         $datas= $request->session()->get('pass');
-        return view('list.profile',compact('datas'));
+        return view('list.profile',compact('datas', 'levels'));
     }
 
     public function new_agenda(){
@@ -195,5 +197,5 @@ class UserController extends Controller
         Alert::success('success', 'Berhasil dihapus');
         return redirect('dashboard-user/upacara');
     }
-    
+
 }

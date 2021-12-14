@@ -203,11 +203,7 @@
                                   <img src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="" >
                               </div>
                               <h5 class="mb-0 text-center"><b><a href="{{route('views-sejarah', $banjars->id)}}">{{$banjars->judul}}</a></b></h5>
-<<<<<<< HEAD
-                              <p class="text-center p-4">{{Str::limit (strip_tags($banjars->konten,60))}}</p>          
-=======
                               <p class="text-center p-4">{{Str::limit(strip_tags($banjars->konten),60)}}</p>          
->>>>>>> 15f2203850aee8869d56f2b7627ae196816722a8
                           </div>
                         @endforeach
                       </div>
@@ -378,7 +374,7 @@
                 </div>
               </div>
               <div class="member-info">
-                <h4>Ni Made Ardhiya Sita Pramesti Dewi</h4>
+                <h4>Ni Made Ardhiya Shita Pramesti Dewi</h4>
                 <span>Accountant</span>
               </div>
             </div>
@@ -428,7 +424,7 @@
              @csrf
               <div class="form-row">
                 <div class="col form-group">
-                  <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Anda" data-msg="Please enter at least 4 chars" required />
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nama Anda" data-msg="Please enter at least 4 chars" required />
                 </div>
                 <div class="col form-group">
                   <input type="email" class="form-control" name="email" id="email" placeholder="Email Anda" data-rule="email" data-msg="Please enter a valid email" required />

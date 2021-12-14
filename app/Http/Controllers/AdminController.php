@@ -229,7 +229,7 @@ class AdminController extends Controller
 
     public function BanjarssAdd(){
     
-        return view('Admin.addPost');
+        return view('Admin.addBanjar');
     }
 
 
@@ -243,14 +243,15 @@ class AdminController extends Controller
 
     public function MessageSave(Request $request){
         $request->validate([
-            'nama'=>'required',
+            'name'=>'required',
             'email'=>'required',
             'subject'=>'required',
             'message'=>'required'
         ]);
+        dd($request);
 
         $data = new message();
-        $data->nama =$request->nama;
+        $data->name =$request->name;
         $data->email =$request->email;
         $data->subject =$request->subject;
         $data->message =$request->message;
@@ -316,16 +317,16 @@ class AdminController extends Controller
     //     return view('tambah.Edit',compact('data'));
     // }
    
-    public function message(Request $request){
+    public function Message(Request $request){
         $request->validate([
-            'nama'=>'required',
+            'name'=>'required',
             'email'=>'required',
             'subject'=>'required',
             'message'=>'required'
         ]);
 
         $data = new message();
-        $data->nama =$request->nama;
+        $data->name =$request->name;
         $data->email =$request->email;
         $data->subject =$request->subject;
         $data->message =$request->message;

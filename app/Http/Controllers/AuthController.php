@@ -108,7 +108,10 @@ class AuthController extends Controller
                     return redirect()->intended('Banjar_A');         
                 }elseif($getid == '2' && auth()->User()->banjar_id == '2'){
                     $datas= $request->session()->get('pass');
-                    return redirect()->intended('Banjar_Digital');         
+                    return redirect()->intended('Banjar_Digital2');
+                }elseif($getid == '6' && auth()->User()->banjar_id == '6'){
+                        $datas= $request->session()->get('pass');
+                        return redirect()->intended('Banjar_Digital');     
                 }else{
                     Alert::error('Login Failed', 'Banjar Tidak Terdaftar');
                     return view('loginOuth');
@@ -120,6 +123,7 @@ class AuthController extends Controller
         return view('loginOuth')->with('error','Login Failed');
         
     }
+
     public function logout(Request $request){
         Auth::logout();
         $request->session()->invalidate();

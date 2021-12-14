@@ -33,8 +33,12 @@ Route::post('/user_register',[AuthController::class,'user_register'])->name('use
 
 
 Route::group(['midlleware'=>['auth']],function(){
+    Route::group(['middleware'=>['cek_login:6']],function(){
+        Route::get('Banjar_Digital',[AdminController::class,'index'])->name('Banjar_Digital-dasboard');
+    });
+
     Route::group(['middleware'=>['cek_login:4']],function(){
-        Route::get('banjar_digital',[UserController::class,'logins'])->name('banjardigital-dasboard');
+        Route::get('Banjar_Digital1',[AdminController::class,'index'])->name('Banjar_iDigital-dasboard');
     });
 
     Route::group(['middleware'=>['cek_login:3']],function(){
@@ -42,7 +46,7 @@ Route::group(['midlleware'=>['auth']],function(){
     });
 
     Route::group(['middleware'=>['cek_login:2']],function(){
-        Route::get('Banjar_Digital',[AdminController::class,'index'])->name('Banjar_Digital-dasboard');
+        Route::get('Banjar_Digital2',[AdminController::class,'index'])->name('Banjar_oDigital-dasboard');
     });
 
     Route::group(['middleware'=>['cek_login:1']],function(){
@@ -70,6 +74,9 @@ Route::group(['midlleware'=>['auth']],function(){
     Route::get('sejarah-data',[AdminController::class,'sejarahData'])->name('Sejarah-user');
     Route::get('banjars-data',[AdminController::class,'banjarData'])->name('banjars-user');
     Route::post('{id}/banjars-saves',[AdminController::class,'BanjarssEdit'])->name('saves-edit-banjar');
+
+
+    Route::get('/{id}/Message-detail',[AdminController::class,'MessageDetail'])->name('message-detail');
     
 });
 
@@ -135,14 +142,7 @@ Route::prefix('/dashboard-user')->group(function(){
     Route::post('/Banjar-delete',[AdminController::class,'Banjarssdelete'])->name('banjar-deletes');
 
     Route::get('/Message-data',[AdminController::class,'MessageData'])->name('message-user');
-    Route::get('/{id}/Message-detail',[AdminController::class,'MessageDetail'])->name('message-detail');
     Route::post('/Message-delete',[AdminController::class,'Messagedelete'])->name('message-delete');
+    Route::post('/Message-save',[AdminController::class,'Message'])->name('message-save');
 });
 
-Route::get('/coba',[AdminController::class,'coba_list']);
-Route::get('{id}/banjar_info',[HomeController::class,'info'])->name('info-banjar');
-Route::get('{id}/sejarah_info',[HomeController::class,'info_sej'])->name('views-sejarah');
-Route::get('/sejarah',[HomeController::class,'sejarah'])->name('add-sejarah');
-Route::post('sejarah_info',[HomeController::class,'info_sejarah'])->name('posting-sejarah');
-
-Route::get('/blogBanjar',[HomeController::class,'blog'])->name('blog-view');

@@ -27,12 +27,12 @@
                                 href="{{ route('upacara-user') }}" aria-expanded="false"><i class="me-3 fas fa-calendar-alt"
                                     aria-hidden="true"></i><span class="hide-menu">Upacara</span></a>
                                 </li>
-                        @if($levels =='admin')
+                        
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{ route('add-postingan') }}" aria-expanded="false"><i class="me-3 fas fa-quote-left"
                                     aria-hidden="true"></i><span class="hide-menu">Postingan</span></a>
                                 </li>
-                        @endif
+                        
                         <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                 aria-expanded="false"><i class="me-3 fas fa-sign-out-alt" 
                                     aria-hidden="true"></i><span class="hide-menu">

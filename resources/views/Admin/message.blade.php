@@ -36,7 +36,7 @@
                 <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                     @csrf
-                    <a type="button" class="btn btn-info" href="{{route('message-details', $hasil->id)}}">Detail</a>      
+                    <a type="button" class="btn btn-info" href="{{route('message-detail', $hasil->id)}}">Detail</a>      
                 </div>
                 <form action="{{route('message-delete',$hasil->id)}}" method='post' class='d-inline'onsubmit="return confirm('Apakah kamu yakin ingin menghapus agenda ini ?')">     
                     @csrf
