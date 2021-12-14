@@ -22,7 +22,7 @@ class Banjar extends Model
         return $this->hasMany(Posting::class, 'banjar_id');
     }
 
-    public function anggota()
+    public function banjars()
     {
         return $this->hasMany(Posting::class, 'banjar_id');
     }

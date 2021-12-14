@@ -203,7 +203,11 @@
                                   <img src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="" >
                               </div>
                               <h5 class="mb-0 text-center"><b><a href="{{route('views-sejarah', $banjars->id)}}">{{$banjars->judul}}</a></b></h5>
+<<<<<<< HEAD
                               <p class="text-center p-4">{{Str::limit (strip_tags($banjars->konten,60))}}</p>          
+=======
+                              <p class="text-center p-4">{{Str::limit(strip_tags($banjars->konten),60)}}</p>          
+>>>>>>> 15f2203850aee8869d56f2b7627ae196816722a8
                           </div>
                         @endforeach
                       </div>
@@ -529,5 +533,6 @@
   <script src="assets/js/main.js"></script>
 
 </body>
+ @include('sweetalert::alert');
 
 </html>

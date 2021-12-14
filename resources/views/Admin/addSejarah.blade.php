@@ -1,12 +1,20 @@
-@extends('layouts/master')
+@extends('Admin/master')
 
-@section('title', 'Postingan')
+@section('title', 'Sejarah Data')
 
-@section('content')
-<link rel="stylesheet" type="text/css" href="/trix/trix.css">
+@section('breadcrumb', 'Add Sejarah')
+@section('content1')
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Anggota</li>
+    </ol>
+@endsection
+
+@section('button')
+ <link rel="stylesheet" type="text/css" href="/trix/trix.css">
   <script type="text/javascript" src="/trix/trix.js"></script>
-
-<form  action="{{route('posting-sejarah')}}" method="post" enctype="multipart/form-data">
+<div class="container">
+<form  action="{{route('Sejarah-Save')}}" method="post" enctype="multipart/form-data">
     @csrf
   <div class="form-group">
     <label for="judul">Judul</label>
@@ -31,9 +39,16 @@
     <input id="konten" type="hidden" name="konten">
     <trix-editor input="konten"></trix-editor>
   </div>
+<<<<<<< HEAD
   <div class="mt-2">
     <button type="submit" class="btn btn-success">Simpan</button>
     <a type="button" class="btn btn-info" href="{{ route('add-postingan') }}">Kembali</a>
+=======
+  <div class="mt-3">
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a type="button" class="btn btn-success" href="{{route('banjar-view')}}">back</a>
+>>>>>>> 15f2203850aee8869d56f2b7627ae196816722a8
   </div>
 </form>
+</div>
 @endsection

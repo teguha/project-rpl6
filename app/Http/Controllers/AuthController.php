@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\Paginator;
 use RealRashid\SweetAlert\Facades\Alert;
+use Symfony\Component\Console\Input\Input;
 
 class AuthController extends Controller
 {
@@ -89,6 +90,9 @@ class AuthController extends Controller
             'username'=>'required',
             'password'=>'required'
         ]);
+        $password= session(['pass'=>$request->password]);
+           
+            
 
         $getid = DB::table('users')
         ->where([['username','=',$request->username]])
@@ -97,12 +101,14 @@ class AuthController extends Controller
         $kredensil= $request->only('email','username','password');
         if(Auth::attempt($kredensil)){
             $user = Auth::user();
+           
+            
                 if($getid == '1' && auth()->User()->banjar_id =='1'){
-                    return redirect()->intended('kr_swela');         
-                }elseif($getid == '3' && auth()->User()->banjar_id == '3'){
-                    return redirect()->intended('kr_slumbung');         
-                }elseif($getid == '4' && auth()->User()->banjar_id == '4'){
-                    return redirect()->intended('kr_slumbung');   
+                    $datas= $request->session()->get('pass');
+                    return redirect()->intended('Banjar_A');         
+                }elseif($getid == '2' && auth()->User()->banjar_id == '2'){
+                    $datas= $request->session()->get('pass');
+                    return redirect()->intended('Banjar_Digital');         
                 }else{
                     Alert::error('Login Failed', 'Banjar Tidak Terdaftar');
                     return view('loginOuth');

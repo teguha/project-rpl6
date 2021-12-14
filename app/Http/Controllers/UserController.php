@@ -20,13 +20,14 @@ class UserController extends Controller
         session(['banjar_id'=>auth()->User()->banjar_id]);
         session(['level'=>auth()->User()->level]);
         session(['email'=>auth()->User()->email]);
+        $datas= $request->session()->get('pass');
      
         $banjar= DB::table('banjar')
         ->where('id','=',auth()->User()->banjar_id)
         ->value('name');
 
         $levels= $request->session()->get('level');
-        return view('list.dashboard',compact('banjar', 'levels'));
+        return view('list.dashboard',compact('banjar','datas', 'levels'));
     }
 
     public function coba_list(){
@@ -41,7 +42,8 @@ class UserController extends Controller
     }
 
     public function profile_list(Request $request){
-        return view('list.profile');
+        $datas= $request->session()->get('pass');
+        return view('list.profile',compact('datas'));
     }
 
     public function new_agenda(){
@@ -193,39 +195,5 @@ class UserController extends Controller
         Alert::success('success', 'Berhasil dihapus');
         return redirect('dashboard-user/upacara');
     }
-
-    public function message_save(Request $request){
-        $request->validate([
-            'nama'=>'required',
-            'email'=>'required',
-            'subject'=>'required',
-            'message'=>'required'
-        ]);
-
-        $data = new message();
-        $data->nama =$request->nama;
-        $data->email =$request->email;
-        $data->subject =$request->subject;
-        $data->message =$request->message;
-        $data->save();
-        return redirect('message_data');
-    }
-
-    public function message_data(){
-        $message = message::latest()->paginate(5);
-        Paginator::useBootstrap();
-        return view('message',compact('message'));
-    }
-
-    public function message_detail($id){
-        $message = message::find($id);
-        return view('messageEdit',compact('message'));
-    }
-
-    public function message_delete($id){
-        $message = message::find($id);
-        $message->delete();
-        Alert::success('success', 'Berhasil dihapus');
-        return redirect('message_data');
-    }
+    
 }

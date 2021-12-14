@@ -19,7 +19,7 @@
         <article>
         <figure class="mb-2"><img class="img-fluid rounded" src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="..." width="1000" height="300" /></figure>
         <h3 class="dashboard-title"><b class="center">{{ $banjars->name }}</b></h3>
-        <p class="dashboard-text ">{{$banjars->keterangan}}</p>
+        <p class="dashboard-text ">{{strip_tags($banjars->keterangan)}}</p>
     </div>
     </article>
      <div class="col-lg-4">
