@@ -1,6 +1,6 @@
 @extends('layouts/master')
 
-@section('title', 'Dasboard User')
+@section('title', 'Dasboard')
 
 @section('breadcrumb', 'Dasboard')
 @section('content1')

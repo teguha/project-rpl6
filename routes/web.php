@@ -17,23 +17,152 @@ use App\Http\Controllers\HomeController; //perintah supaya dapat menggunakan con
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',[HomeController::class,'index']);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/logins',[HomeController::class,'tes']);
 Route::get('/coba',function(){
     return view('coba');
 });
 
-Route::post('/login',[AuthController::class,'index'])->name('login-view');
-
+Route::post('/login',[AuthController::class,'login'])->name('login-view');
 Route::post('/register',[AuthController::class,'register'])->name('register-view');
-
-Route::post('/proses_login',[AuthController::class,'proses_login'])->name('proses_login');
-
-Route::post('/user_register',[AuthController::class,'user_registerr'])->name('user-register');
-
+Route::post('/proses_login',[AuthController::class,'proses_login'])->name('proses-login');
+Route::post('/user_register',[AuthController::class,'user_register'])->name('user-register');
 
 
 Route::group(['midlleware'=>['auth']],function(){
+    Route::group(['middleware'=>['cek_login:4']],function(){
+        Route::get('banjar_digital',[UserController::class,'logins'])->name('banjardigital-dasboard');
+    });
+
     Route::group(['middleware'=>['cek_login:3']],function(){
         Route::get('kr_slumbung',[UserController::class,'logins'])->name('kr_slumbung-dasboard');
     });
@@ -46,22 +175,32 @@ Route::group(['midlleware'=>['auth']],function(){
         Route::get('kr_swela',[UserController::class,'logins'])->name('kr_swela-dasboard');
     });
 
-    Route::get('/{id}/edit-Agenda',[UserController::class,'edit_agenda'])->name('agenda-edit');
+    Route::get('/{id}/edit-agenda',[UserController::class,'edit_agenda'])->name('agenda-edit');
     Route::get('/{id}/edit-upacara',[UserController::class,'edit_upacara'])->name('upacara-edit');
     Route::post('/logout',[AuthController::class,'logout'])->name('user-logout');
+
+    Route::get('/add-posting',[HomeController::class,'add_postingan'])->name('add-postingan');
+    Route::get('/add-posting-banjar',[HomeController::class,'add_posting_banjar'])->name('add-banjar');
+    Route::get('/add-posting-sejarah',[HomeController::class,'add_posting_sejarah'])->name('add-sejarah');
+
+    Route::get('/coba',[AdminController::class,'coba_list']);
+    Route::get('{id}/banjar-info',[HomeController::class,'views_banjar'])->name('views-banjar');
+    Route::get('{id}/sejarah-info',[HomeController::class,'views_sejarah'])->name('views-sejarah');
+    Route::post('/sejarah-info',[HomeController::class,'posting_sejarah'])->name('posting-sejarah');
+    Route::post('/banjar-info',[HomeController::class,'posting_banjar'])->name('posting-banjar');
+    Route::get('/blogBanjar',[HomeController::class,'blog'])->name('blog-view');
     
 });
 
 
 Route::get('/banjar',[HomeController::class,'banjar'])->name('banjar-view');
-Route::post('message_save',[UserController::class,'message'])->name('message-save');
-Route::get('message_data',[UserController::class,'message_data'])->name('message-view');
+Route::post('message-save',[UserController::class,'message_save'])->name('message-save');
+Route::get('message-data',[UserController::class,'message_data'])->name('message-view');
 Route::get('/{id}/message-detail',[UserController::class,'message_detail'])->name('message-details');
 Route::post('/{id}/message-delete',[UserController::class,'message_delete'])->name('message-delete');
 
-Route::get('/posting',[HomeController::class,'posting'])->name('login-view');
+/*Route::get('/posting',[HomeController::class,'posting'])->name('login-view');*/
 
-Route::post('/SimpanPosting',[HomeController::class,'Savedd'])->name('posting');
 
 Route::prefix('/dashboard-user')->group(function(){
     Route::get('/',[UserController::class,'logins'])->name('dashboard-user');
@@ -72,27 +211,20 @@ Route::prefix('/dashboard-user')->group(function(){
     Route::get('/upacara',[UserController::class,'upacara_list'])->name('upacara-user');
 
     /*----------- tambah -----------*/
-    Route::get('/newagenda',[UserController::class,'new_agenda'])->name('agenda-new');
-    Route::get('/newupacara',[UserController::class,'new_upacara'])->name('upacara-new');
+    Route::get('/new-agenda',[UserController::class,'new_agenda'])->name('agenda-new');
+    Route::get('/new-upacara',[UserController::class,'new_upacara'])->name('upacara-new');
 
     /*----------- edit -----------*/
     // Route::get('/{id}/edit-agenda',[AdminController::class,'edit_agenda'])->name('agenda-edit');
  
     /*----------- save -----------*/
-    Route::post('/saveagenda',[UserController::class,'save_agenda'])->name('agenda-save');
-    Route::post('/saveupacara',[UserController::class,'save_upacara'])->name('upacara-save');
+    Route::post('/save-agenda',[UserController::class,'save_agenda'])->name('agenda-save');
+    Route::post('/save-upacara',[UserController::class,'save_upacara'])->name('upacara-save');
   
-    Route::post('/{id}/editsaveAgenda',[UserController::class,'AgendaEditSave'])->name('agenda-edits');
-    Route::post('/{id}/deleteagenda',[UserController::class,'delete_agenda'])->name('agenda-delete');
+    Route::post('/{id}/edit-save-agenda',[UserController::class,'edit_save_agenda'])->name('agenda-edit-save');
+    Route::post('/{id}/delete-agenda',[UserController::class,'delete_agenda'])->name('agenda-delete');
 
-    Route::post('/{id}/editsaveUpacara',[UserController::class,'UpacaraEditSave'])->name('upacara-edits');
-    Route::post('/{id}/deleteupacara',[UserController::class,'delete_upacara'])->name('upacara-delete');
+    Route::post('/{id}/edit-save-upacara',[UserController::class,'edit_save_upacara'])->name('upacara-edit-save');
+    Route::post('/{id}/delete-upacara',[UserController::class,'delete_upacara'])->name('upacara-delete');
 });
 
-Route::get('/coba',[AdminController::class,'coba_list']);
-Route::get('{id}/banjar_info',[HomeController::class,'info'])->name('views-banjarr');
-Route::get('{id}/sejarah_info',[HomeController::class,'info_sej'])->name('views-sejarah');
-Route::get('/sejarah',[HomeController::class,'sejarah'])->name('add-sejarah');
-Route::post('sejarah_info',[HomeController::class,'info_sejarah'])->name('posting-sejarah');
-
-Route::get('/blogBanjar',[HomeController::class,'blog'])->name('blog-view');

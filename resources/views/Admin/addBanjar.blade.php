@@ -1,12 +1,10 @@
-@extends('Main.main')
+@extends('layouts/master')
 
-@section('title','Add Postingan')
+@section('title', 'Postingan')
 
-@section('header','Add Postingan')
+@section('content')
 
-@section('contents')
-
-<form  action="{{route('posting')}}" method="post" enctype="multipart/form-data">
+<form action="{{ route('posting-banjar') }}" method="post" enctype="multipart/form-data">
     @csrf
   <div class="form-group">
     <label for="name">Nama Banjar</label>
@@ -36,8 +34,8 @@
     </div>
   </div>
   <div class="mb-3">
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a type="button" class="btn btn-success" href="">back</a>
+    <button type="submit" class="btn btn-success">Simpan</button>
+    <a type="button" class="btn btn-info" href="{{ route('add-postingan') }}">Kembali</a>
   </div>
 </form>
 @endsection

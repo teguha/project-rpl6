@@ -1,10 +1,10 @@
-@extends('Main.main')
+@extends('layouts/master')
 
-@section('title','Add Sejarah')
+@section('title', 'Postingan')
 
-@section('header','Add Sejarah')
-
-@section('contents')
+@section('content')
+<link rel="stylesheet" type="text/css" href="/trix/trix.css">
+  <script type="text/javascript" src="/trix/trix.js"></script>
 
 <form  action="{{route('posting-sejarah')}}" method="post" enctype="multipart/form-data">
     @csrf
@@ -31,9 +31,9 @@
     <input id="konten" type="hidden" name="konten">
     <trix-editor input="konten"></trix-editor>
   </div>
-  <div class="mb-3">
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a type="button" class="btn btn-success" href="{{route('banjar-view')}}">back</a>
+  <div class="mt-2">
+    <button type="submit" class="btn btn-success">Simpan</button>
+    <a type="button" class="btn btn-info" href="{{ route('add-postingan') }}">Kembali</a>
   </div>
 </form>
 @endsection

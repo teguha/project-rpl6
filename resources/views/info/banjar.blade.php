@@ -5,7 +5,7 @@
 @section('contents')
 <header class="mb-3">
 <!-- Post title-->
-<h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
+<h1 class="fw-bolder mb-1">{{$banjars->name}}</h1>
 <!-- Post meta content-->
 <div class="text-muted fst-italic mb-2">Posted on {{$banjars->created_at}}, 2021 by Banjar Digital</div>
 <!-- Post categories-->

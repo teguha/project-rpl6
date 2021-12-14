@@ -12,7 +12,7 @@
 
 @section('content')
 
-<form action="{{route('upacara-edits', $data->id)}}" method="POST" >
+<form action="{{route('upacara-edit-save', $data->id)}}" method="POST" >
         @csrf
         <div class="col-lg-8 col-xlg-9 col-md-7">
             <div class="card">

@@ -104,7 +104,10 @@
       </h1>
       <h2>Kami adalah tim yang membuat website BanjarDigital sebagai Portal untuk semua Banjar di Bali</h2>
       <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Memulai</a>
+        <form action="/login" method="post">
+            @csrf
+              <button href="{{url('/login')}}" type="submit" class="btn-get-started scrollto">Mari Mulai</button>
+          </form>
       </div>
     </div>
   </section>
@@ -126,9 +129,9 @@
                                   <img src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="" >
                               </div>
                               <h5 class="mb-0 text-center"><b>
-                              <a href="{{route('views-banjarr', $banjars->id)}}">{{$banjars->name}}</a>
+                              <a href="{{route('views-banjar', $banjars->id)}}">{{$banjars->name}}</a>
                               </b></h5>
-                              <p class="text-center p-4">{{Str::limit($banjars->keterangan,60)}}</p>          
+                              <p class="text-center p-4">{{Str::limit (strip_tags($banjars->keterangan,60))}}</p>          
                           </div>
                         @endforeach
                       </div>
@@ -200,7 +203,7 @@
                                   <img src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="" >
                               </div>
                               <h5 class="mb-0 text-center"><b><a href="{{route('views-sejarah', $banjars->id)}}">{{$banjars->judul}}</a></b></h5>
-                              <p class="text-center p-4">{{Str::limit($banjars->konten,60)}}</p>          
+                              <p class="text-center p-4">{{Str::limit (strip_tags($banjars->konten,60))}}</p>          
                           </div>
                         @endforeach
                       </div>
@@ -392,14 +395,14 @@
           <div class="col-lg-6">
             <div class="info-box mb-4">
               <i class="bx bx-map"></i>
-              <h3>Our Address</h3>
-              <p>A108 Adam Street, New York, NY 535022</p>
+              <h3>Alamat Kami</h3>
+              <p>Denpasar, Jalan Raya Sesetan, 12345AAA</p>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="info-box  mb-4">
               <i class="bx bx-envelope"></i>
-              <h3>Email Us</h3>
+              <h3>Email</h3>
               <p>BanjarDGTL@example.com</p>
             </div>
           </div>
@@ -407,37 +410,37 @@
           <div class="col-lg-3 col-md-6">
             <div class="info-box  mb-4">
               <i class="bx bx-phone-call"></i>
-              <h3>Call Us</h3>
+              <h3>Telepon</h3>
               <p>+6285238661660</p>
             </div>
           </div>
         </div>
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-6 ">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26542.491161391066!2d115.39316053044617!3d-8.54154912325752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd21119c4d14f17%3A0x4030bfbca7d2ed0!2sSemarapura%2C%20Klungkung%2C%20Klungkung%20Regency%2C%20Bali!5e0!3m2!1sen!2sid!4v1638891067753!5m2!1sen!2sid" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126214.34777322148!2d115.15423266863552!3d-8.672676918487898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2409b0e5e80db%3A0xe27334e8ccb9374a!2sDenpasar%2C%20Denpasar%20City%2C%20Bali!5e0!3m2!1sen!2sid!4v1639451614191!5m2!1sen!2sid" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
           </div>
           <div class="col-lg-6">
             <form action="{{route('message-save')}}" method="post">
              @csrf
               <div class="form-row">
                 <div class="col form-group">
-                  <input type="text" name="nama" class="form-control" id="nama" placeholder="Your Name" data-msg="Please enter at least 4 chars" required />
+                  <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Anda" data-msg="Please enter at least 4 chars" required />
                 </div>
                 <div class="col form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" required />
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email Anda" data-rule="email" data-msg="Please enter a valid email" required />
              
                 </div>
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"  data-msg="Please enter at least 8 chars of subject" required />
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subjek"  data-msg="Please enter at least 8 chars of subject" required />
                
               </div>
               <div class="form-group">
-                <textarea class="form-control" name="message" id="message" rows="5"  data-msg="Please write something for us" placeholder="Message" required></textarea>
+                <textarea class="form-control" name="message" id="message" rows="5"  data-msg="Ketik pesan Anda disini" placeholder="Pesan" required></textarea>
                 
               </div>
               <div class="text-center">
-                <button type="submit" class="btn1 btn-primary">Send Message</button>
+                <button type="submit" class="btn1 btn-primary">Kirim Pesan</button>
               </div>
             </form>
           </div>
@@ -455,26 +458,26 @@
         <div class="row">
 
           <div class="col-lg-4 col-md-6 footer-contact ">
-            <h3>BizLand<span>.</span></h3>
+            <h3>Banjar Digital<span>.</span></h3>
             <p>
-              jalan rajawali<br>
-              Bali, nomor 87777<br>
+              Jalan Raya Sesetan<br>
+              Bali, nomor 12345AAA<br>
               Indonesia<br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Phone:</strong> +62 852 3866 1660<br>
+              <strong>Email:</strong> BanjarDGTL@example.com<br>
             </p>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-links ">
-            <h4>Useful Links</h4>
+            <h4>Link Alternatif</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Banjar</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">History</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Team</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">contact</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Beranda</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#banjar">Banjar</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#service">Layanan</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#history">Sejarah</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#about">Tentang</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#team">Tim</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#contact">Kontak</a></li>
             </ul>
           </div>
 

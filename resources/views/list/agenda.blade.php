@@ -1,8 +1,8 @@
 @extends('layouts/master')
 
-@section('title', 'Agenda User')
+@section('title', 'Agenda')
 
-@section('breadcrumb', 'Agenda User')
+@section('breadcrumb', 'Agenda')
 @section('content1')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>

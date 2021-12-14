@@ -36,7 +36,7 @@
 @section('contents')
 <header class="mb-3">
 <!-- Post title-->
-<h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
+<h1 class="fw-bolder mb-1">{{$sejarahs->judul}}</h1>
 <!-- Post meta content-->
 <div class="text-muted fst-italic mb-2">Posted on {{$sejarahs->created_at}}, 2021 by Banjar Digital</div>
 <!-- Post categories-->
@@ -50,7 +50,7 @@
         <article>
         <figure class="mb-2"><img class="img-fluid rounded" src="{{URL::to('/')}}/foto/{{$sejarahs->gambar}}" alt="..." width="1000" height="300" /></figure>
         <h3 class="dashboard-title"><b class="center">{{ $sejarahs->name }}</b></h3>
-        <p class="dashboard-text ">{{$sejarahs->konten}}</p>
+        <p class="dashboard-text ">{{ strip_tags ($sejarahs->konten)}}</p>
     </div>
     </article>
      <div class="col-lg-4">

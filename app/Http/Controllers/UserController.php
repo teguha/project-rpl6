@@ -20,20 +20,24 @@ class UserController extends Controller
         session(['banjar_id'=>auth()->User()->banjar_id]);
         session(['level'=>auth()->User()->level]);
         session(['email'=>auth()->User()->email]);
-    
      
         $banjar= DB::table('banjar')
         ->where('id','=',auth()->User()->banjar_id)
         ->value('name');
-        return view('list.dashboard',compact('banjar'));
+
+        $levels= $request->session()->get('level');
+        return view('list.dashboard',compact('banjar', 'levels'));
     }
 
     public function coba_list(){
         return view('User.coba');
     }
 
-    public function dashboard_list(){
-        return view('list.dashboard');
+    public function dashboard_list(Request $request){
+
+        session(['level'=>auth()->User()->level]);
+        $levels= $request->session()->get('level');        
+        return view('list.dashboard', compact('levels'));
     }
 
     public function profile_list(Request $request){
@@ -87,7 +91,7 @@ class UserController extends Controller
         return view('list.agenda',compact('hasil','time','waktu','levels'));
     }
 
-    public function AgendaEditSave(Request $request, $id){
+    public function edit_save_agenda(Request $request, $id){
         $request->validate([
             'kegiatan'=>'required',
             'waktu'=>'required',
@@ -162,7 +166,7 @@ class UserController extends Controller
         return view('list.upacara',compact('hasil','time','waktu','levels'));
     }
 
-    public function UpacaraEditSave(Request $request, $id){
+    public function edit_save_upacara(Request $request, $id){
         $request->validate([
             'kegiatan'=>'required',
             'waktu'=>'required',
@@ -171,13 +175,13 @@ class UserController extends Controller
             'ketentuan'=>'required',
         ]);
         $datas= $request->session()->get('banjar_id');
-        $upacara= Upacara::find($id);
+        $upacara = Upacara::find($id);
         $upacara->kegiatan = $request->kegiatan;
-        $upacara->tanggal= $request->tanggal;
-        $upacara->banjar_id=$datas;
-        $upacara->waktu= $request->waktu;
-        $upacara->tempat= $request->tempat;
-        $upacara->ketentuan= $request->ketentuan;
+        $upacara->tanggal = $request->tanggal;
+        $upacara->banjar_id = $datas;
+        $upacara->waktu = $request->waktu;
+        $upacara->tempat = $request->tempat;
+        $upacara->ketentuan = $request->ketentuan;
         $upacara->save();
      
         return redirect('/dashboard-user/upacara');
@@ -190,7 +194,7 @@ class UserController extends Controller
         return redirect('dashboard-user/upacara');
     }
 
-    public function message(Request $request){
+    public function message_save(Request $request){
         $request->validate([
             'nama'=>'required',
             'email'=>'required',

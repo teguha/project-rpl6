@@ -11,7 +11,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
-    public function index(){
+    public function login(){
         return view('loginOuth');
     }
 
@@ -19,7 +19,7 @@ class AuthController extends Controller
         return view('RegisterOuth');
     }
 
-    public function user_registerr(Request $request){
+    public function user_register(Request $request){
 
       
         $request->validate([
@@ -73,10 +73,10 @@ class AuthController extends Controller
                 $anggota= new User();
                 $anggota->username = $request->username;
                 $anggota->name = $request->name;
-                $anggota->banjar_id=$getid;
-                $anggota->email= $request->email;
-                $anggota->password= bcrypt($request->password);
-                $anggota->level= 'anggota';
+                $anggota->banjar_id = $getid;
+                $anggota->email = $request->email;
+                $anggota->password = bcrypt($request->password);
+                $anggota->level = 'anggota';
                 $anggota->save();
                 return view('loginOuth');
             }
@@ -101,6 +101,8 @@ class AuthController extends Controller
                     return redirect()->intended('kr_swela');         
                 }elseif($getid == '3' && auth()->User()->banjar_id == '3'){
                     return redirect()->intended('kr_slumbung');         
+                }elseif($getid == '4' && auth()->User()->banjar_id == '4'){
+                    return redirect()->intended('kr_slumbung');   
                 }else{
                     Alert::error('Login Failed', 'Banjar Tidak Terdaftar');
                     return view('loginOuth');
