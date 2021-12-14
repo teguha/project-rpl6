@@ -280,8 +280,9 @@ class AdminController extends Controller
         return view('list.dashboard');
     }
 
-    public function profile_list(){
-        return view('list.profile');
+    public function profile_list(Request $request){
+        $datas= $request->session()->get('pass');
+        return view('list.profile',compact('datas'));
     }
 
     public function agenda_list(Request $request){
@@ -315,6 +316,23 @@ class AdminController extends Controller
     //     return view('tambah.Edit',compact('data'));
     // }
    
+    public function message(Request $request){
+        $request->validate([
+            'nama'=>'required',
+            'email'=>'required',
+            'subject'=>'required',
+            'message'=>'required'
+        ]);
+
+        $data = new message();
+        $data->nama =$request->nama;
+        $data->email =$request->email;
+        $data->subject =$request->subject;
+        $data->message =$request->message;
+        $data->save();
+        Alert::success('success', 'Berhasil dikirim');
+        return redirect('/banjar');
+    }
 
     
 

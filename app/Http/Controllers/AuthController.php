@@ -90,7 +90,7 @@ class AuthController extends Controller
             'username'=>'required',
             'password'=>'required'
         ]);
-            $password= session(['pass'=>$request->password]);
+        $password= session(['pass'=>$request->password]);
            
             
 
@@ -101,7 +101,7 @@ class AuthController extends Controller
         $kredensil= $request->only('email','username','password');
         if(Auth::attempt($kredensil)){
             $user = Auth::user();
-            $password=$request->password;
+           
             
                 if($getid == '1' && auth()->User()->banjar_id =='1'){
                     $datas= $request->session()->get('pass');
@@ -110,7 +110,6 @@ class AuthController extends Controller
                     $datas= $request->session()->get('pass');
                     return redirect()->intended('Banjar_Digital');         
                 }else{
-                   
                     Alert::error('Login Failed', 'Banjar Tidak Terdaftar');
                     return view('loginOuth');
                 }

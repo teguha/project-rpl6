@@ -59,7 +59,8 @@ Route::group(['midlleware'=>['auth']],function(){
 
 Route::POST('banjar_save',[AdminController::class,'BanjarAdd'])->name('views-banjarr-saving');
 Route::get('/banjar',[HomeController::class,'banjar'])->name('banjar-view');
-Route::post('message_save',[UserController::class,'message'])->name('message-save');
+
+Route::post('message_savedd',[AdminController::class,'message'])->name('message-save');
 Route::get('message_data',[UserController::class,'message_data'])->name('message-view');
 Route::get('/{id}/message-detail',[AdminController::class,'messageDetail'])->name('message-details');
 Route::post('/{id}/message-delete',[UserController::class,'message_delete'])->name('message-delete');
