@@ -3,8 +3,8 @@
 <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
     <div class="container d-flex">
       <div class="contact-info mr-auto">
-        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">BanjarDgtl@gmail.com</a>
-        <i class="icofont-phone"></i> 085 238 661 660
+        <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">BanjarDGTL@gmail.com</a>
+        <i class="icofont-phone"></i> +62 852 3866 1660
       </div>
       <div class="social-links">
         <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
@@ -26,13 +26,13 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#banjar">Banjar</a></li>
-           <li><a href="#service">Service</a></li>
-           <li><a href="#history">History</a></li>
-           <li><a href="#about">About</a></li>
-           <li><a href="#team">Team</a></li>
-           <li><a href="#contact">Contact</a></li>
+          <li class="active"><a href="#">Beranda</a></li>
+          <li><a href="route()">Banjar</a></li>
+           <li><a href="#service">Layanan</a></li>
+           <li><a href="#history">Sejarah</a></li>
+           <li><a href="#about">Tentang</a></li>
+           <li><a href="#team">Tim</a></li>
+           <li><a href="#contact">Kontak</a></li>
           <form action="/login" method="post">
             @csrf
             <button type="submit" class="buttonLogin px-3 py-2">Login</button>
