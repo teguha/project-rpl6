@@ -1,12 +1,20 @@
-@extends('Main.main')
+@extends('Admin/master')
 
-@section('title','Add Sejarah')
+@section('title', 'Sejarah Data')
 
-@section('header','Add Sejarah')
+@section('breadcrumb', 'Add Sejarah')
+@section('content1')
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Anggota</li>
+    </ol>
+@endsection
 
-@section('contents')
-
-<form  action="{{route('posting-sejarah')}}" method="post" enctype="multipart/form-data">
+@section('button')
+ <link rel="stylesheet" type="text/css" href="/trix/trix.css">
+  <script type="text/javascript" src="/trix/trix.js"></script>
+<div class="container">
+<form  action="{{route('Sejarah-Save')}}" method="post" enctype="multipart/form-data">
     @csrf
   <div class="form-group">
     <label for="judul">Judul</label>
@@ -31,9 +39,10 @@
     <input id="konten" type="hidden" name="konten">
     <trix-editor input="konten"></trix-editor>
   </div>
-  <div class="mb-3">
+  <div class="mt-3">
     <button type="submit" class="btn btn-primary">Save</button>
     <a type="button" class="btn btn-success" href="{{route('banjar-view')}}">back</a>
   </div>
 </form>
+</div>
 @endsection

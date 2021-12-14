@@ -1,9 +1,15 @@
-@extends('info.tampilan')
+@extends('Admin/master')
 
-@section('title','Blog post')
+@section('title', 'Message')
 
-
-@section('contents')
+@section('breadcrumb', 'Message')
+@section('content1')
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="list.dashboard">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Message</li>
+    </ol>
+@endsection
+@section('content')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/script.css">
     <h1 class="card-title " ></h1>

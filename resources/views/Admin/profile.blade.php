@@ -1,5 +1,5 @@
 
-@extends('layouts/master')
+@extends('Admin/master')
 
 @section('title', 'Profile User')
 
@@ -51,7 +51,7 @@
                         <div class="form-group">
                             <label class="col-md-12 mb-0">Password</label>
                             <div class="col-md-12">
-                                <input type="text" value="{{ $datas}} "
+                                <input type="password" value="{{ auth()->user()->password }} "
                                     class="form-control ps-0 form-control-line" >
                             </div>
                         </div>

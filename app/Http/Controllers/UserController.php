@@ -20,12 +20,12 @@ class UserController extends Controller
         session(['banjar_id'=>auth()->User()->banjar_id]);
         session(['level'=>auth()->User()->level]);
         session(['email'=>auth()->User()->email]);
-    
+        $datas= $request->session()->get('pass');
      
         $banjar= DB::table('banjar')
         ->where('id','=',auth()->User()->banjar_id)
         ->value('name');
-        return view('list.dashboard',compact('banjar'));
+        return view('list.dashboard',compact('banjar','datas'));
     }
 
     public function coba_list(){
@@ -37,7 +37,8 @@ class UserController extends Controller
     }
 
     public function profile_list(Request $request){
-        return view('list.profile');
+        $datas= $request->session()->get('pass');
+        return view('list.profile',compact('datas'));
     }
 
     public function new_agenda(){
