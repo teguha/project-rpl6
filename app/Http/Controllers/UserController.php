@@ -191,22 +191,7 @@ class UserController extends Controller
         return redirect('dashboard-user/upacara');
     }
 
-    public function message(Request $request){
-        $request->validate([
-            'nama'=>'required',
-            'email'=>'required',
-            'subject'=>'required',
-            'message'=>'required'
-        ]);
-
-        $data = new message();
-        $data->nama =$request->nama;
-        $data->email =$request->email;
-        $data->subject =$request->subject;
-        $data->message =$request->message;
-        $data->save();
-        return redirect('message_data');
-    }
+   
 
     public function message_data(){
         $message = message::latest()->paginate(5);
