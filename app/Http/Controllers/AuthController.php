@@ -101,8 +101,6 @@ class AuthController extends Controller
         $kredensil= $request->only('email','username','password');
         if(Auth::attempt($kredensil)){
             $user = Auth::user();
-           
-            
                 if($getid == '1' && auth()->User()->banjar_id =='1'){
                     $datas= $request->session()->get('pass');
                     return redirect()->intended('Banjar_A');         

@@ -276,6 +276,8 @@ class AdminController extends Controller
         return redirect('Admin.message_data');
     }
 
+
+    
     public function dashboard_list(){
         return view('list.dashboard');
     }
