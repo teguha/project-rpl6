@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/login.css">
      <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>login!</title>
+    <title>Login!</title>
   </head>
   <body class="body">
     <section class="Form my-4 mx-5">
@@ -23,8 +23,8 @@
                     <img class="mb-3" src="../assets2/images/logo-icon2.png" width="300" alt="">
                     
                     <h4>Sign To Banjar</h4>
-                    <form action="{{route('proses_login')}}" method="post">
-                    @csrf
+                    <form action="{{route('proses-login')}}" method="post">
+                        @csrf
                         <div class="form-row">
                             <div class="col-lg-7">
                                 <input type="email" placeholder="Email" class="form-control @error ('email') is-invalid @enderror my-2 p-3 " id="email" name="email" required autofocus>
@@ -64,7 +64,7 @@
                     </form>
                     <form action="/register" method="post">
                         @csrf
-                        <p>dont have an account ?<button type="submit" class="logOut px-2 py-2">register</button>here </a>now<p>
+                        <p>dont have an account ?<button type="submit" class="logOut px-2 py-2">register</button>here now<p>
                     </form>
                 </div>
             </div>

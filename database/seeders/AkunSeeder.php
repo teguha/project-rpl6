@@ -20,11 +20,18 @@ class AkunSeeder extends Seeder
             'password'=>bcrypt('admin123')
 
         ],
-       [
+        [
             'username'=>'admin_kr_swela',
             'name'=>'adminteguh',
             'email'=>'kr_swelaadmin@example.com',
             'password'=>bcrypt('admin456')
+
+        ],
+        [
+            'username'=>'admin_ardhiya',
+            'name'=>'adminardhiya',
+            'email'=>'banjardigital@example.com',
+            'password'=>bcrypt('admin678')
 
         ]
       

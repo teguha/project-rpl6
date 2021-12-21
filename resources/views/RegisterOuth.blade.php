@@ -76,7 +76,7 @@
                         </div>
                          <div class="form-row">
                             <div class="col-lg-7">
-                                <button type="submit" class="btn1 btn-primary">Login</button>
+                                <button type="submit" class="btn1 btn-primary">Register</button>
                             </div>
                         </div>
                     </form>

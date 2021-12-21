@@ -12,7 +12,7 @@ use Symfony\Component\Console\Input\Input;
 
 class AuthController extends Controller
 {
-    public function index(){
+    public function login(){
         return view('loginOuth');
     }
 
@@ -20,7 +20,7 @@ class AuthController extends Controller
         return view('RegisterOuth');
     }
 
-    public function user_registerr(Request $request){
+    public function user_register(Request $request){
 
       
         $request->validate([
@@ -74,10 +74,10 @@ class AuthController extends Controller
                 $anggota= new User();
                 $anggota->username = $request->username;
                 $anggota->name = $request->name;
-                $anggota->banjar_id=$getid;
-                $anggota->email= $request->email;
-                $anggota->password= bcrypt($request->password);
-                $anggota->level= 'anggota';
+                $anggota->banjar_id = $getid;
+                $anggota->email = $request->email;
+                $anggota->password = bcrypt($request->password);
+                $anggota->level = 'anggota';
                 $anggota->save();
                 return view('loginOuth');
             }
@@ -106,7 +106,10 @@ class AuthController extends Controller
                     return redirect()->intended('Banjar_A');         
                 }elseif($getid == '2' && auth()->User()->banjar_id == '2'){
                     $datas= $request->session()->get('pass');
-                    return redirect()->intended('Banjar_Digital');         
+                    return redirect()->intended('Banjar_Digital2');
+                }elseif($getid == '6' && auth()->User()->banjar_id == '6'){
+                        $datas= $request->session()->get('pass');
+                        return redirect()->intended('Banjar_Digital');     
                 }else{
                     Alert::error('Login Failed', 'Banjar Tidak Terdaftar');
                     return view('loginOuth');
@@ -118,6 +121,7 @@ class AuthController extends Controller
         return view('loginOuth')->with('error','Login Failed');
         
     }
+
     public function logout(Request $request){
         Auth::logout();
         $request->session()->invalidate();

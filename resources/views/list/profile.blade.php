@@ -1,7 +1,7 @@
 
 @extends('layouts/master')
 
-@section('title', 'Profile User')
+@section('title', 'Profile')
 
 @section('breadcrumb', 'Profile')
 @section('content1')

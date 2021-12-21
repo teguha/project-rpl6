@@ -25,20 +25,27 @@ class UserController extends Controller
         $banjar= DB::table('banjar')
         ->where('id','=',auth()->User()->banjar_id)
         ->value('name');
-        return view('list.dashboard',compact('banjar','datas'));
+
+        $levels= $request->session()->get('level');
+        return view('list.dashboard',compact('banjar','datas', 'levels'));
     }
 
     public function coba_list(){
         return view('User.coba');
     }
 
-    public function dashboard_list(){
-        return view('list.dashboard');
+    public function dashboard_list(Request $request){
+
+        session(['level'=>auth()->User()->level]);
+        $levels= $request->session()->get('level');        
+        return view('list.dashboard', compact('levels'));
     }
 
     public function profile_list(Request $request){
+        session(['level'=>auth()->User()->level]);
+        $levels= $request->session()->get('level');       
         $datas= $request->session()->get('pass');
-        return view('list.profile',compact('datas'));
+        return view('list.profile',compact('datas', 'levels'));
     }
 
     public function new_agenda(){
@@ -88,7 +95,7 @@ class UserController extends Controller
         return view('list.agenda',compact('hasil','time','waktu','levels'));
     }
 
-    public function AgendaEditSave(Request $request, $id){
+    public function edit_save_agenda(Request $request, $id){
         $request->validate([
             'kegiatan'=>'required',
             'waktu'=>'required',
@@ -163,7 +170,7 @@ class UserController extends Controller
         return view('list.upacara',compact('hasil','time','waktu','levels'));
     }
 
-    public function UpacaraEditSave(Request $request, $id){
+    public function edit_save_upacara(Request $request, $id){
         $request->validate([
             'kegiatan'=>'required',
             'waktu'=>'required',
@@ -172,13 +179,13 @@ class UserController extends Controller
             'ketentuan'=>'required',
         ]);
         $datas= $request->session()->get('banjar_id');
-        $upacara= Upacara::find($id);
+        $upacara = Upacara::find($id);
         $upacara->kegiatan = $request->kegiatan;
-        $upacara->tanggal= $request->tanggal;
-        $upacara->banjar_id=$datas;
-        $upacara->waktu= $request->waktu;
-        $upacara->tempat= $request->tempat;
-        $upacara->ketentuan= $request->ketentuan;
+        $upacara->tanggal = $request->tanggal;
+        $upacara->banjar_id = $datas;
+        $upacara->waktu = $request->waktu;
+        $upacara->tempat = $request->tempat;
+        $upacara->ketentuan = $request->ketentuan;
         $upacara->save();
      
         return redirect('/dashboard-user/upacara');
@@ -191,23 +198,4 @@ class UserController extends Controller
         return redirect('dashboard-user/upacara');
     }
 
-   
-
-    public function message_data(){
-        $message = message::latest()->paginate(5);
-        Paginator::useBootstrap();
-        return view('message',compact('message'));
-    }
-
-    public function message_detail($id){
-        $message = message::find($id);
-        return view('messageEdit',compact('message'));
-    }
-
-    public function message_delete($id){
-        $message = message::find($id);
-        $message->delete();
-        Alert::success('success', 'Berhasil dihapus');
-        return redirect('message_data');
-    }
 }

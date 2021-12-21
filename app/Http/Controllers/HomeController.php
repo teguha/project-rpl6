@@ -7,21 +7,11 @@ use App\Models\Posting;
 use App\Models\Banjar;
 use App\Models\Sejarah;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
-
-    public function index()
-    {
-    return view('Admin.addPost');
-    }
-
-    public function tes()
-    {
-    return view('loginOuth');
-    }
-
-
+    
     public function banjar(){
         $data=Banjar::latest()->paginate(100);
         $sejarah=Sejarah::latest()->paginate(500);
@@ -29,7 +19,43 @@ class HomeController extends Controller
         return view('banjar',compact('data','sejarah'));
     }
 
-    public function Savedd(Request $request){
+    public function views_banjar($id)
+    {
+        $banjars= Banjar::find($id);
+        $data=Posting::latest()->paginate(100);
+        Paginator::useBootstrap();
+        return view('info.banjar', compact('data', 'banjars'));
+    }
+    
+    public function views_sejarah($id)
+    {
+        $sejarahs= Sejarah::find($id);
+        $data=Posting::latest()->paginate(100);
+        Paginator::useBootstrap();
+        return view('info.sejarah', compact('data', 'sejarahs'));
+    }
+    
+    public function blog($id){
+        $banjars= Banjar::find($id);
+        $data=Posting::latest()->paginate(100);
+        Paginator::useBootstrap();
+        return view('info/tampilan',compact('data', 'banjars'));
+    }
+    
+    public function add_postingan(Request $request){
+
+        session(['level'=>auth()->User()->level]);
+        $levels= $request->session()->get('level');
+        return view('admin.postingan', compact('levels'));
+    }
+
+    public function add_posting_banjar(Request $request){
+        session(['level'=>auth()->User()->level]);
+        $levels= $request->session()->get('level');
+        return view('admin.addBanjar', compact('levels'));
+    }
+
+    public function posting_banjar(Request $request){
         $request->validate([
             'name' => 'required',
             'keterangan'=> 'required',
@@ -47,30 +73,17 @@ class HomeController extends Controller
         $image->move(public_path('foto'),$new_image);
     
         Posting::create($data);
-        return redirect('/banjar')->with('succes','data berhasil disimpan');
-    }
-    public function info($id)
-    {
-        $banjars= Banjar::find($id);
-        $data=Posting::latest()->paginate(100);
-        Paginator::useBootstrap();
-        return view('info.banjar', compact('data', 'banjars'));
-
+        return Redirect::back()->with('success','data berhasil disimpan');
     }
     
-    public function info_sej($id)
-    {
-        $sejarahs= Sejarah::find($id);
-        $data=Posting::latest()->paginate(100);
-        Paginator::useBootstrap();
-        return view('info.sejarah', compact('data', 'sejarahs'));
+    public function add_posting_sejarah(Request $request){
+
+        session(['level'=>auth()->User()->level]);
+        $levels= $request->session()->get('level');
+        return view('admin.addSejarah',compact('levels'));
     }
 
-    public function sejarah(){
-        return view('Admin.addSejarah');
-    }
-
-    public function info_sejarah(Request $request)
+    public function posting_sejarah(Request $request)
     {
         $request->validate([
             'judul' => 'required',
@@ -88,13 +101,11 @@ class HomeController extends Controller
         );
         $image->move(public_path('foto'),$image_name);
         Sejarah::create($data);
-        return redirect('/banjar');
+        return Redirect::back()->with('success','data berhasil disimpan');
     }
-    
-    public function blog($id){
-        $banjars= Banjar::find($id);
-        $data=Posting::latest()->paginate(100);
-        Paginator::useBootstrap();
-        return view('info/tampilan',compact('data', 'banjars'));
+
+    public function tes(){
+        return view('loginOuth');
     }
+
 }
