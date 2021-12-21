@@ -61,6 +61,13 @@ class AdminController extends Controller
         return view('Admin.banjar',compact('Banjar'));
     }
 
+    public function banjarListBlock(){
+        $data=Banjar::latest()->paginate(100);
+        $Banjar= Banjar::latest()->paginate(5);
+        Paginator::useBootstrap();
+        return view('info.fileBanjar',compact('Banjar', 'data'));
+    }
+
     public function banjarDetail($id){
         $Banjar= Banjar::find($id);
         return view('Admin.banjarDetail',compact('Banjar'));
@@ -95,6 +102,13 @@ class AdminController extends Controller
         $Sejarah= Sejarah::latest()->paginate(5);
         Paginator::useBootstrap();
         return view('Admin.sejarah',compact('Sejarah'));
+    }
+
+    public function sejarahListBlock(){
+        $data=Sejarah::latest()->paginate(100);
+        $Sejarah= Sejarah::latest()->paginate(5);
+        Paginator::useBootstrap();
+        return view('info.fileSejarah',compact('Sejarah', 'data'));
     }
 
     public function sejarahSave(Request $request)

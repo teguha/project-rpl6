@@ -26,13 +26,13 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="#">Beranda</a></li>
-          <li><a href="route()">Banjar</a></li>
-           <li><a href="#service">Layanan</a></li>
-           <li><a href="#history">Sejarah</a></li>
-           <li><a href="#about">Tentang</a></li>
-           <li><a href="#team">Tim</a></li>
-           <li><a href="#contact">Kontak</a></li>
+          <li class="active"><a href="{{ route('banjar-view') }}">Beranda</a></li>
+          <li><a href="{{ route('banjar-list-block') }}">Banjar</a></li>
+           <li><a href="{{ route('banjar-view') }}">Layanan</a></li>
+           <li><a href="{{ route('sejarah-list-block') }}">Sejarah</a></li>
+           <li><a href="{{ route('banjar-view') }}">Tentang</a></li>
+           <li><a href="{{ route('banjar-view') }}">Tim</a></li>
+           <li><a href="{{ route('banjar-view') }}">Kontak</a></li>
           <form action="/login" method="post">
             @csrf
             <button type="submit" class="buttonLogin px-3 py-2">Login</button>

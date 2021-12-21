@@ -9,8 +9,8 @@
 <!-- Post meta content-->
 <div class="text-muted fst-italic mb-2">Posted on {{$banjars->created_at}}, 2021 by Banjar Digital</div>
 <!-- Post categories-->
-<h4><span class="badge badge-dark">Bali</span> <span class="badge badge-dark">Banjar</span>
- <span class="badge badge-dark">Digital</span> <span class="badge badge-dark">Banjar</span></h4>
+<h5><span class="badge badge-dark">Bali</span> <span class="badge badge-dark">Banjar</span>
+ <span class="badge badge-dark">Digital</span> </h5>
 </header>
 
 <div class="container mt-3">
@@ -58,8 +58,8 @@
                 
                     <!-- Side widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Side Widget</div>
-                        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                        <div class="card-header">Om Swastyastu</div>
+                        <div class="card-body">Kini Anda berada di halaman blog, tempatnya berbagai informasi seputar banjar dan sejarah yang ingin kalian ketahui</div>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,9 @@
 </div>  
     </article>
     <footer class="py-3 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Banjar Digital 2021</p></div>
+    <div class="copyright m-0 text-center text-white">
+        &copy; Copyright <strong><span>BanjarDigital</span></strong>. All Rights Reserved
+      </div>
     </footer>
      
 @endsection

@@ -116,7 +116,7 @@
 <!-- ======= Featured Services Section ======= -->
     <section id="banjar" class="featured-services">
       <div class="section-title">
-        <h2>Banjar</h2>
+        <h2> <a href="{{ route('banjar-list-block') }}"> Banjar</a></h2>
         <p>Daftar Banjar Yang Telah Beralih Ke Digital</p>
       </div>
       <section id="slider">
@@ -126,7 +126,7 @@
                         @foreach ($data as $banjars)
                           <div class="slider-card">
                               <div class="d-flex justify-content-center align-items-center mb-4">
-                                  <img src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="" >
+                                  <img src="{{URL::to('/')}}/foto/{{$banjars->gambar}}" alt="">
                               </div>
                               <h5 class="mb-0 text-center"><b>
                               <a href="{{route('views-banjar', $banjars->id)}}">{{$banjars->name}}</a>
@@ -152,7 +152,7 @@
       <div class="container" data-aos="fade-up">
         <div class="section-title">
           <h2>Layanan</h2>
-          <p>Kami Menyediakan Jasa Pembuatan Website Untuk Kebutuhan Banjar Anda</p>
+          <p>Kami Bersedia Membantu Memberikan Sarana Website Untuk Kebutuhan Banjar Anda</p>
         </div>
         <div class="row mt-4">
           <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="100">
@@ -161,10 +161,10 @@
           <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <ul>
               <li>
-                <i class="bx bx-store-alt"></i>
+                <i class="bx bx-phone"></i>
                 <div>
                   <h3>Hubungi Kami</h3>
-                  <h5>Magni facilis facilis repellendus cum excepturi quaerat praesentium libre trade</h5>
+                  <h5>Pastikan Anda untuk menuju kolom Kontak lalu isilah data-data yang diperlukan</h5>
                 </div>
               </li>
               <br>
@@ -172,15 +172,15 @@
                 <i class="bx bx-images"></i>
                 <div>
                   <h3>Kirim Informasi Banjar Anda</h3>
-                  <h5>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata redi</h5>
+                  <h5>Informasi banjar Anda dapat dikirim setelah Tim kami selesai memverifikasi pesan Anda untuk kemudian kami hubungi sebagai kerjasama lanjutan</h5>
                 </div>
               </li>
               <br>
               <li>
-                <i class="bx bx-images"></i>
+                <i class="bx bx-briefcase"></i>
                 <div>
                   <h3>Kami Akan Kerjakan</h3>
-                  <h5>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata redi</h5>
+                  <h5>Apabila sudah memdapat kesepakatan dan bahan telah dikirimkan, kami akan segera mengerjakan</h5>
                 </div>
               </li>
             </ul>
@@ -190,7 +190,7 @@
     <section id="history" class="featured-services">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>Sejarah</h2>
+          <h2><a href="{{ route('sejarah-list-block') }}"> Sejarah</a></h2>
             <p>Informasi Sejarah </p>
         </div>
       <section id="slider">
@@ -276,7 +276,9 @@
 	      </div>
         {{-- --------------------------------------------------------------------------------------------- --}}
         <div class="container justify-content-center" data-aos="fade-up" data-aos-delay="100">
-            <p> Sarana Akses digital untuk seluruh masyarakat di bali bertujuan untuk memudahkan krama banjar mengetahui informasi terkait kegiatan ,beserta riwayat kegiatan,selain itu ,memberikan akses kepada masyarakat luar bali untuk  mendapatkan informasi terkait banjar .kontak yang dapat dihubungi dengan tetap mempertahankan privasi kelian banjar (kepala lingkungan)</p>
+            <h5 style="text-align: center; margin: 35px 40px 35px 40px"> Sarana akses digital untuk seluruh masyarakat di Bali. Fitur lanjutan setelah mendaftar pada website ini bertujuan untuk memudahkan krama banjar untuk mengetahui informasi terkait kegiatan adat maupun non adat,
+            beserta riwayat kegiatan tersebut. Selain itu, memberikan akses kepada masyarakat luar Bali untuk mendapatkan informasi terkait banjar. Kontak dari pengurus banjar akan disediakan dan dapat langsung dihubungi setelah Anda resmi merupakan
+            anggota banjar dengan tujuan untuk tetap mempertahankan privasi kelian banjar (kepala lingkungan)</h5>
         </div>
     </section>
 <!-- End Services Section -->
@@ -310,7 +312,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
               <div class="member-img">
-                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                <img src="assets/img/team/team-22.jpg" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
                   <a href=""><i class="icofont-facebook"></i></a>
@@ -338,7 +340,7 @@
               </div>
               <div class="member-info">
                 <h4>Bayu Pradnya Wira Ditya</h4>
-                <span>CTO</span>
+                <span>Chief Technology Officer</span>
               </div>
             </div>
           </div>
@@ -365,7 +367,7 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
             <div class="member">
               <div class="member-img">
-                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                <img src="assets/img/team/team-51.jpg" class="img-fluid" alt="">
                 <div class="social">
                   <a href=""><i class="icofont-twitter"></i></a>
                   <a href=""><i class="icofont-facebook"></i></a>
@@ -375,7 +377,7 @@
               </div>
               <div class="member-info">
                 <h4>Ni Made Ardhiya Shita Pramesti Dewi</h4>
-                <span>Accountant</span>
+                <span>General Manager Office</span>
               </div>
             </div>
           </div>
@@ -387,8 +389,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Contact</h2>
-          <p>If You are interested, please contact us via email, phone, or send a direct message via the Form on this website</p>
+          <h2>Kontak</h2>
+          <p>Apabila Anda tertarik bergabung bersama kami. Anda dapat menghubungi melalui kolom berikut. Isilah data-data yang diperlukan, maka pesan akan langsung masuk ke database kami untuk segera kami proses lebih lanjut</p>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">

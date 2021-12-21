@@ -78,6 +78,10 @@ Route::group(['midlleware'=>['auth']],function(){
 
     Route::get('/{id}/Message-detail',[AdminController::class,'MessageDetail'])->name('message-detail');
     
+    /* Blog Post Block List*/
+    Route::get('/ListBanjar',[AdminController::class,'banjarListBlock'])->name('banjar-list-block');
+    Route::get('/ListSejarah',[AdminController::class,'sejarahListBlock'])->name('sejarah-list-block');
+
 });
 
 Route::POST('banjar_save',[AdminController::class,'BanjarAdd'])->name('views-banjarr-saving');
